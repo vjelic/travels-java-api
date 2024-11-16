@@ -1,0 +1,764 @@
+{
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "Glog.AI",
+          "organization": "Glog.AI",
+          "fullName": "Glog, Making software more secure",
+          "version": "1.0.0",
+          "semanticVersion": "1.0.0",
+          "informationUri": "https://www.glog.ai",
+          "rules": [
+            {
+              "id": "glog-9e2d4032-4931-43ab-9f53-acfea6f22505",
+              "help": {
+                "text": "",
+                "markdown": "\nThis class is a Spring Controller. All methods annotated with `RequestMapping` (as well as its shortcut annotations `GetMapping`, `PostMapping`, `PutMapping`, `DeleteMapping`, and `PatchMapping`) are reachable remotely. This class should be analyzed to make sure that remotely exposed methods are safe to expose to potential attackers.\n\nPerform input validation to ensure only properly formed data is entering the workflow in an information system, preventing malformed data from persisting in the database and triggering malfunction of various downstream components. Input validation should happen as early as possible in the data flow, preferably as soon as the data is received from the external party.\n\nData from all potentially untrusted sources should be subject to input validation, including not only Internet-facing web clients but also backend feeds over extranets, from suppliers, partners, vendors or regulators, each of which may be compromised on their own and start sending malformed data.\n\n\n## Solution (Bean Validation)\n\n```java\npublic class ExampleDto implements Serializable {\n    @Pattern(regexp = \"white list regular expression\")\n    @Size(min = minimum field size, max = maximum field size)\n    private String fieldName;\n}\n```\n\n## Solution (Validation Service or Method)\n\n```java\npublic boolean validateData(string data, String whiteListRegex) {\n    Pattern p = Pattern.compile(whiteListRegex);\n    Matcher m = p.matcher(data);\n    return m.matches();\n}\n```\n\n\n\n## References\n- [OWASP: REST Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html)\n- [OWASP: Input Validation Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html)\n- [OWASP: Bean Validation Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Bean_Validation_Cheat_Sheet.html)\n\n\n"
+              },
+              "properties": {
+                "tags": [
+                  "SPRING_ENDPOINT"
+                ]
+              }
+            },
+            {
+              "id": "glog-f4621660-c20c-4ef4-8287-81b75e7b30e6",
+              "help": {
+                "text": "",
+                "markdown": "\nThis class is a Spring Controller. All methods annotated with `RequestMapping` (as well as its shortcut annotations `GetMapping`, `PostMapping`, `PutMapping`, `DeleteMapping`, and `PatchMapping`) are reachable remotely. This class should be analyzed to make sure that remotely exposed methods are safe to expose to potential attackers.\n\nPerform input validation to ensure only properly formed data is entering the workflow in an information system, preventing malformed data from persisting in the database and triggering malfunction of various downstream components. Input validation should happen as early as possible in the data flow, preferably as soon as the data is received from the external party.\n\nData from all potentially untrusted sources should be subject to input validation, including not only Internet-facing web clients but also backend feeds over extranets, from suppliers, partners, vendors or regulators, each of which may be compromised on their own and start sending malformed data.\n\n\n## Solution (Bean Validation)\n\n```java\npublic class ExampleDto implements Serializable {\n    @Pattern(regexp = \"white list regular expression\")\n    @Size(min = minimum field size, max = maximum field size)\n    private String fieldName;\n}\n```\n\n## Solution (Validation Service or Method)\n\n```java\npublic boolean validateData(string data, String whiteListRegex) {\n    Pattern p = Pattern.compile(whiteListRegex);\n    Matcher m = p.matcher(data);\n    return m.matches();\n}\n```\n\n\n\n## References\n- [OWASP: REST Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html)\n- [OWASP: Input Validation Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html)\n- [OWASP: Bean Validation Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Bean_Validation_Cheat_Sheet.html)\n\n\n"
+              },
+              "properties": {
+                "tags": [
+                  "SPRING_ENDPOINT"
+                ]
+              }
+            },
+            {
+              "id": "glog-44ef4543-8d0d-4361-a8fc-867efb1b64b8",
+              "help": {
+                "text": "",
+                "markdown": "\nThis class is a Spring Controller. All methods annotated with `RequestMapping` (as well as its shortcut annotations `GetMapping`, `PostMapping`, `PutMapping`, `DeleteMapping`, and `PatchMapping`) are reachable remotely. This class should be analyzed to make sure that remotely exposed methods are safe to expose to potential attackers.\n\nPerform input validation to ensure only properly formed data is entering the workflow in an information system, preventing malformed data from persisting in the database and triggering malfunction of various downstream components. Input validation should happen as early as possible in the data flow, preferably as soon as the data is received from the external party.\n\nData from all potentially untrusted sources should be subject to input validation, including not only Internet-facing web clients but also backend feeds over extranets, from suppliers, partners, vendors or regulators, each of which may be compromised on their own and start sending malformed data.\n\n\n## Solution (Bean Validation)\n\n```java\npublic class ExampleDto implements Serializable {\n    @Pattern(regexp = \"white list regular expression\")\n    @Size(min = minimum field size, max = maximum field size)\n    private String fieldName;\n}\n```\n\n## Solution (Validation Service or Method)\n\n```java\npublic boolean validateData(string data, String whiteListRegex) {\n    Pattern p = Pattern.compile(whiteListRegex);\n    Matcher m = p.matcher(data);\n    return m.matches();\n}\n```\n\n\n\n## References\n- [OWASP: REST Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html)\n- [OWASP: Input Validation Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html)\n- [OWASP: Bean Validation Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Bean_Validation_Cheat_Sheet.html)\n\n\n"
+              },
+              "properties": {
+                "tags": [
+                  "SPRING_ENDPOINT"
+                ]
+              }
+            },
+            {
+              "id": "glog-fb8805a7-4aa0-4dc7-83c1-bd896a3d25da",
+              "help": {
+                "text": "",
+                "markdown": "\nThis class is a Spring Controller. All methods annotated with `RequestMapping` (as well as its shortcut annotations `GetMapping`, `PostMapping`, `PutMapping`, `DeleteMapping`, and `PatchMapping`) are reachable remotely. This class should be analyzed to make sure that remotely exposed methods are safe to expose to potential attackers.\n\nPerform input validation to ensure only properly formed data is entering the workflow in an information system, preventing malformed data from persisting in the database and triggering malfunction of various downstream components. Input validation should happen as early as possible in the data flow, preferably as soon as the data is received from the external party.\n\nData from all potentially untrusted sources should be subject to input validation, including not only Internet-facing web clients but also backend feeds over extranets, from suppliers, partners, vendors or regulators, each of which may be compromised on their own and start sending malformed data.\n\n\n## Solution (Bean Validation)\n\n```java\npublic class ExampleDto implements Serializable {\n    @Pattern(regexp = \"white list regular expression\")\n    @Size(min = minimum field size, max = maximum field size)\n    private String fieldName;\n}\n```\n\n## Solution (Validation Service or Method)\n\n```java\npublic boolean validateData(string data, String whiteListRegex) {\n    Pattern p = Pattern.compile(whiteListRegex);\n    Matcher m = p.matcher(data);\n    return m.matches();\n}\n```\n\n\n\n## References\n- [OWASP: REST Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html)\n- [OWASP: Input Validation Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html)\n- [OWASP: Bean Validation Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Bean_Validation_Cheat_Sheet.html)\n\n\n"
+              },
+              "properties": {
+                "tags": [
+                  "SPRING_ENDPOINT"
+                ]
+              }
+            },
+            {
+              "id": "glog-eb502fdf-029c-42ed-a12b-3cb2b325f298",
+              "help": {
+                "text": "",
+                "markdown": "\nThis class is a Spring Controller. All methods annotated with `RequestMapping` (as well as its shortcut annotations `GetMapping`, `PostMapping`, `PutMapping`, `DeleteMapping`, and `PatchMapping`) are reachable remotely. This class should be analyzed to make sure that remotely exposed methods are safe to expose to potential attackers.\n\nPerform input validation to ensure only properly formed data is entering the workflow in an information system, preventing malformed data from persisting in the database and triggering malfunction of various downstream components. Input validation should happen as early as possible in the data flow, preferably as soon as the data is received from the external party.\n\nData from all potentially untrusted sources should be subject to input validation, including not only Internet-facing web clients but also backend feeds over extranets, from suppliers, partners, vendors or regulators, each of which may be compromised on their own and start sending malformed data.\n\n\n## Solution (Bean Validation)\n\n```java\npublic class ExampleDto implements Serializable {\n    @Pattern(regexp = \"white list regular expression\")\n    @Size(min = minimum field size, max = maximum field size)\n    private String fieldName;\n}\n```\n\n## Solution (Validation Service or Method)\n\n```java\npublic boolean validateData(string data, String whiteListRegex) {\n    Pattern p = Pattern.compile(whiteListRegex);\n    Matcher m = p.matcher(data);\n    return m.matches();\n}\n```\n\n\n\n## References\n- [OWASP: REST Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html)\n- [OWASP: Input Validation Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html)\n- [OWASP: Bean Validation Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Bean_Validation_Cheat_Sheet.html)\n\n\n"
+              },
+              "properties": {
+                "tags": [
+                  "SPRING_ENDPOINT"
+                ]
+              }
+            },
+            {
+              "id": "glog-bfd5bc22-9a21-4f79-b82d-01222af7d6ab",
+              "help": {
+                "text": "",
+                "markdown": "\nThis class is a Spring Controller. All methods annotated with `RequestMapping` (as well as its shortcut annotations `GetMapping`, `PostMapping`, `PutMapping`, `DeleteMapping`, and `PatchMapping`) are reachable remotely. This class should be analyzed to make sure that remotely exposed methods are safe to expose to potential attackers.\n\nPerform input validation to ensure only properly formed data is entering the workflow in an information system, preventing malformed data from persisting in the database and triggering malfunction of various downstream components. Input validation should happen as early as possible in the data flow, preferably as soon as the data is received from the external party.\n\nData from all potentially untrusted sources should be subject to input validation, including not only Internet-facing web clients but also backend feeds over extranets, from suppliers, partners, vendors or regulators, each of which may be compromised on their own and start sending malformed data.\n\n\n## Solution (Bean Validation)\n\n```java\npublic class ExampleDto implements Serializable {\n    @Pattern(regexp = \"white list regular expression\")\n    @Size(min = minimum field size, max = maximum field size)\n    private String fieldName;\n}\n```\n\n## Solution (Validation Service or Method)\n\n```java\npublic boolean validateData(string data, String whiteListRegex) {\n    Pattern p = Pattern.compile(whiteListRegex);\n    Matcher m = p.matcher(data);\n    return m.matches();\n}\n```\n\n\n\n## References\n- [OWASP: REST Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html)\n- [OWASP: Input Validation Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html)\n- [OWASP: Bean Validation Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Bean_Validation_Cheat_Sheet.html)\n\n\n"
+              },
+              "properties": {
+                "tags": [
+                  "SPRING_ENDPOINT"
+                ]
+              }
+            },
+            {
+              "id": "glog-e5a80435-092f-4a15-986d-bb76b527e62b",
+              "help": {
+                "text": "",
+                "markdown": "\nThis class is a Spring Controller. All methods annotated with `RequestMapping` (as well as its shortcut annotations `GetMapping`, `PostMapping`, `PutMapping`, `DeleteMapping`, and `PatchMapping`) are reachable remotely. This class should be analyzed to make sure that remotely exposed methods are safe to expose to potential attackers.\n\nPerform input validation to ensure only properly formed data is entering the workflow in an information system, preventing malformed data from persisting in the database and triggering malfunction of various downstream components. Input validation should happen as early as possible in the data flow, preferably as soon as the data is received from the external party.\n\nData from all potentially untrusted sources should be subject to input validation, including not only Internet-facing web clients but also backend feeds over extranets, from suppliers, partners, vendors or regulators, each of which may be compromised on their own and start sending malformed data.\n\n\n## Solution (Bean Validation)\n\n```java\npublic class ExampleDto implements Serializable {\n    @Pattern(regexp = \"white list regular expression\")\n    @Size(min = minimum field size, max = maximum field size)\n    private String fieldName;\n}\n```\n\n## Solution (Validation Service or Method)\n\n```java\npublic boolean validateData(string data, String whiteListRegex) {\n    Pattern p = Pattern.compile(whiteListRegex);\n    Matcher m = p.matcher(data);\n    return m.matches();\n}\n```\n\n\n\n## References\n- [OWASP: REST Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html)\n- [OWASP: Input Validation Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html)\n- [OWASP: Bean Validation Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Bean_Validation_Cheat_Sheet.html)\n\n\n"
+              },
+              "properties": {
+                "tags": [
+                  "SPRING_ENDPOINT"
+                ]
+              }
+            },
+            {
+              "id": "glog-bae4ae0a-11a2-458e-a408-7d946997d75b",
+              "help": {
+                "text": "",
+                "markdown": "\nThis class is a Spring Controller. All methods annotated with `RequestMapping` (as well as its shortcut annotations `GetMapping`, `PostMapping`, `PutMapping`, `DeleteMapping`, and `PatchMapping`) are reachable remotely. This class should be analyzed to make sure that remotely exposed methods are safe to expose to potential attackers.\n\nPerform input validation to ensure only properly formed data is entering the workflow in an information system, preventing malformed data from persisting in the database and triggering malfunction of various downstream components. Input validation should happen as early as possible in the data flow, preferably as soon as the data is received from the external party.\n\nData from all potentially untrusted sources should be subject to input validation, including not only Internet-facing web clients but also backend feeds over extranets, from suppliers, partners, vendors or regulators, each of which may be compromised on their own and start sending malformed data.\n\n\n## Solution (Bean Validation)\n\n```java\npublic class ExampleDto implements Serializable {\n    @Pattern(regexp = \"white list regular expression\")\n    @Size(min = minimum field size, max = maximum field size)\n    private String fieldName;\n}\n```\n\n## Solution (Validation Service or Method)\n\n```java\npublic boolean validateData(string data, String whiteListRegex) {\n    Pattern p = Pattern.compile(whiteListRegex);\n    Matcher m = p.matcher(data);\n    return m.matches();\n}\n```\n\n\n\n## References\n- [OWASP: REST Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html)\n- [OWASP: Input Validation Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html)\n- [OWASP: Bean Validation Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Bean_Validation_Cheat_Sheet.html)\n\n\n"
+              },
+              "properties": {
+                "tags": [
+                  "SPRING_ENDPOINT"
+                ]
+              }
+            },
+            {
+              "id": "glog-9ffd3d8f-8e16-4871-957d-0c5963439de2",
+              "help": {
+                "text": "",
+                "markdown": "\nThis class is a Spring Controller. All methods annotated with `RequestMapping` (as well as its shortcut annotations `GetMapping`, `PostMapping`, `PutMapping`, `DeleteMapping`, and `PatchMapping`) are reachable remotely. This class should be analyzed to make sure that remotely exposed methods are safe to expose to potential attackers.\n\nPerform input validation to ensure only properly formed data is entering the workflow in an information system, preventing malformed data from persisting in the database and triggering malfunction of various downstream components. Input validation should happen as early as possible in the data flow, preferably as soon as the data is received from the external party.\n\nData from all potentially untrusted sources should be subject to input validation, including not only Internet-facing web clients but also backend feeds over extranets, from suppliers, partners, vendors or regulators, each of which may be compromised on their own and start sending malformed data.\n\n\n## Solution (Bean Validation)\n\n```java\npublic class ExampleDto implements Serializable {\n    @Pattern(regexp = \"white list regular expression\")\n    @Size(min = minimum field size, max = maximum field size)\n    private String fieldName;\n}\n```\n\n## Solution (Validation Service or Method)\n\n```java\npublic boolean validateData(string data, String whiteListRegex) {\n    Pattern p = Pattern.compile(whiteListRegex);\n    Matcher m = p.matcher(data);\n    return m.matches();\n}\n```\n\n\n\n## References\n- [OWASP: REST Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html)\n- [OWASP: Input Validation Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html)\n- [OWASP: Bean Validation Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Bean_Validation_Cheat_Sheet.html)\n\n\n"
+              },
+              "properties": {
+                "tags": [
+                  "SPRING_ENDPOINT"
+                ]
+              }
+            },
+            {
+              "id": "glog-c757d3cc-6a45-4d23-9829-1313d3968cc6",
+              "help": {
+                "text": "",
+                "markdown": "\nThis class is a Spring Controller. All methods annotated with `RequestMapping` (as well as its shortcut annotations `GetMapping`, `PostMapping`, `PutMapping`, `DeleteMapping`, and `PatchMapping`) are reachable remotely. This class should be analyzed to make sure that remotely exposed methods are safe to expose to potential attackers.\n\nPerform input validation to ensure only properly formed data is entering the workflow in an information system, preventing malformed data from persisting in the database and triggering malfunction of various downstream components. Input validation should happen as early as possible in the data flow, preferably as soon as the data is received from the external party.\n\nData from all potentially untrusted sources should be subject to input validation, including not only Internet-facing web clients but also backend feeds over extranets, from suppliers, partners, vendors or regulators, each of which may be compromised on their own and start sending malformed data.\n\n\n## Solution (Bean Validation)\n\n```java\npublic class ExampleDto implements Serializable {\n    @Pattern(regexp = \"white list regular expression\")\n    @Size(min = minimum field size, max = maximum field size)\n    private String fieldName;\n}\n```\n\n## Solution (Validation Service or Method)\n\n```java\npublic boolean validateData(string data, String whiteListRegex) {\n    Pattern p = Pattern.compile(whiteListRegex);\n    Matcher m = p.matcher(data);\n    return m.matches();\n}\n```\n\n\n\n## References\n- [OWASP: REST Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html)\n- [OWASP: Input Validation Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html)\n- [OWASP: Bean Validation Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Bean_Validation_Cheat_Sheet.html)\n\n\n"
+              },
+              "properties": {
+                "tags": [
+                  "SPRING_ENDPOINT"
+                ]
+              }
+            },
+            {
+              "id": "glog-6d448dd3-0e0a-48eb-9f3e-9a39d1dc324f",
+              "help": {
+                "text": "",
+                "markdown": "\nThis class is a Spring Controller. All methods annotated with `RequestMapping` (as well as its shortcut annotations `GetMapping`, `PostMapping`, `PutMapping`, `DeleteMapping`, and `PatchMapping`) are reachable remotely. This class should be analyzed to make sure that remotely exposed methods are safe to expose to potential attackers.\n\nPerform input validation to ensure only properly formed data is entering the workflow in an information system, preventing malformed data from persisting in the database and triggering malfunction of various downstream components. Input validation should happen as early as possible in the data flow, preferably as soon as the data is received from the external party.\n\nData from all potentially untrusted sources should be subject to input validation, including not only Internet-facing web clients but also backend feeds over extranets, from suppliers, partners, vendors or regulators, each of which may be compromised on their own and start sending malformed data.\n\n\n## Solution (Bean Validation)\n\n```java\npublic class ExampleDto implements Serializable {\n    @Pattern(regexp = \"white list regular expression\")\n    @Size(min = minimum field size, max = maximum field size)\n    private String fieldName;\n}\n```\n\n## Solution (Validation Service or Method)\n\n```java\npublic boolean validateData(string data, String whiteListRegex) {\n    Pattern p = Pattern.compile(whiteListRegex);\n    Matcher m = p.matcher(data);\n    return m.matches();\n}\n```\n\n\n\n## References\n- [OWASP: REST Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html)\n- [OWASP: Input Validation Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html)\n- [OWASP: Bean Validation Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Bean_Validation_Cheat_Sheet.html)\n\n\n"
+              },
+              "properties": {
+                "tags": [
+                  "SPRING_ENDPOINT"
+                ]
+              }
+            },
+            {
+              "id": "glog-7c827fa1-9931-48b8-a290-402c0787b55a",
+              "help": {
+                "text": "",
+                "markdown": "\nThis class is a Spring Controller. All methods annotated with `RequestMapping` (as well as its shortcut annotations `GetMapping`, `PostMapping`, `PutMapping`, `DeleteMapping`, and `PatchMapping`) are reachable remotely. This class should be analyzed to make sure that remotely exposed methods are safe to expose to potential attackers.\n\nPerform input validation to ensure only properly formed data is entering the workflow in an information system, preventing malformed data from persisting in the database and triggering malfunction of various downstream components. Input validation should happen as early as possible in the data flow, preferably as soon as the data is received from the external party.\n\nData from all potentially untrusted sources should be subject to input validation, including not only Internet-facing web clients but also backend feeds over extranets, from suppliers, partners, vendors or regulators, each of which may be compromised on their own and start sending malformed data.\n\n\n## Solution (Bean Validation)\n\n```java\npublic class ExampleDto implements Serializable {\n    @Pattern(regexp = \"white list regular expression\")\n    @Size(min = minimum field size, max = maximum field size)\n    private String fieldName;\n}\n```\n\n## Solution (Validation Service or Method)\n\n```java\npublic boolean validateData(string data, String whiteListRegex) {\n    Pattern p = Pattern.compile(whiteListRegex);\n    Matcher m = p.matcher(data);\n    return m.matches();\n}\n```\n\n\n\n## References\n- [OWASP: REST Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html)\n- [OWASP: Input Validation Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html)\n- [OWASP: Bean Validation Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Bean_Validation_Cheat_Sheet.html)\n\n\n"
+              },
+              "properties": {
+                "tags": [
+                  "SPRING_ENDPOINT"
+                ]
+              }
+            },
+            {
+              "id": "glog-5ffcf1e7-7556-47c2-8e47-0331567a1352",
+              "help": {
+                "text": "",
+                "markdown": "\nThis class is a Spring Controller. All methods annotated with `RequestMapping` (as well as its shortcut annotations `GetMapping`, `PostMapping`, `PutMapping`, `DeleteMapping`, and `PatchMapping`) are reachable remotely. This class should be analyzed to make sure that remotely exposed methods are safe to expose to potential attackers.\n\nPerform input validation to ensure only properly formed data is entering the workflow in an information system, preventing malformed data from persisting in the database and triggering malfunction of various downstream components. Input validation should happen as early as possible in the data flow, preferably as soon as the data is received from the external party.\n\nData from all potentially untrusted sources should be subject to input validation, including not only Internet-facing web clients but also backend feeds over extranets, from suppliers, partners, vendors or regulators, each of which may be compromised on their own and start sending malformed data.\n\n\n## Solution (Bean Validation)\n\n```java\npublic class ExampleDto implements Serializable {\n    @Pattern(regexp = \"white list regular expression\")\n    @Size(min = minimum field size, max = maximum field size)\n    private String fieldName;\n}\n```\n\n## Solution (Validation Service or Method)\n\n```java\npublic boolean validateData(string data, String whiteListRegex) {\n    Pattern p = Pattern.compile(whiteListRegex);\n    Matcher m = p.matcher(data);\n    return m.matches();\n}\n```\n\n\n\n## References\n- [OWASP: REST Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html)\n- [OWASP: Input Validation Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html)\n- [OWASP: Bean Validation Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Bean_Validation_Cheat_Sheet.html)\n\n\n"
+              },
+              "properties": {
+                "tags": [
+                  "SPRING_ENDPOINT"
+                ]
+              }
+            },
+            {
+              "id": "glog-851e241a-8e5d-4b71-8cb4-89666828dddd",
+              "help": {
+                "text": "",
+                "markdown": "## Description\n\n\"HTTP Headers Not Trustworthy\" is a vulnerability that arises when an application trusts data sent via HTTP headers without proper validation. This can lead to various security issues such as HTTP Response Splitting, Cross-Site Scripting (XSS), or other injection attacks. In Java, this vulnerability can occur when using methods like `request.getHeader()` to retrieve data from HTTP headers.\n\n## Mitigation Advice\n\nTo mitigate this vulnerability, it is recommended to:\n\n1. Avoid trusting HTTP headers blindly. Always validate and sanitize the data retrieved from HTTP headers before using it in your application.\n2. Use a list of allowed characters and reject any input that contains characters not in the list.\n3. Use a security framework that automatically handles these types of vulnerabilities.\n\n## Source Code Fix Recommendation\n\nHere is an example of how to sanitize the header data using a whitelist of allowed characters:\n\n```java\nimport java.util.regex.Pattern;\nimport javax.servlet.http.HttpServletRequest;\n\n// ...\n\nprivate static final Pattern AUTH_HEADER_PATTERN = Pattern.compile(\"^[a-zA-Z0-9]*$\");\n\n// ...\n\nString token = request.getHeader(\"AUTH_HEADER\");\nif (!AUTH_HEADER_PATTERN.matcher(token).matches()) {\n    throw new IllegalArgumentException(\"Invalid characters in auth header\");\n}\n```\n\nIn this example, only alphanumeric characters are allowed in the `AUTH_HEADER`. Any other characters will cause an `IllegalArgumentException` to be thrown.\n\n## Library Dependencies\n\nThe code example does not require any additional library dependencies beyond what is typically included in a standard Java web application:\n\n- `javax.servlet-api` for `HttpServletRequest`\n\n## References\n\n- [OWASP: Unvalidated Redirects and Forwards Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Unvalidated_Redirects_and_Forwards_Cheat_Sheet.html)\n- [CWE-113: Improper Neutralization of CRLF Sequences in HTTP Headers ('HTTP Response Splitting')](https://cwe.mitre.org/data/definitions/113.html)\n\nPlease note that the links provided are active and accessible to anonymous users at the time of writing this report."
+              },
+              "properties": {
+                "tags": [
+                  "SERVLET_HEADER"
+                ]
+              }
+            },
+            {
+              "id": "glog-a936d97e-0807-4084-8b07-51a966e68a64",
+              "help": {
+                "text": "",
+                "markdown": "## Description\n\nCross-Site Request Forgery (CSRF) is a type of attack that occurs when a malicious web site, email, blog, instant message, or program causes a user's web browser to perform an unwanted action on a trusted site for which the user is authenticated. In the context of Java programming, the vulnerability \"Protection against Spring CSRF is deactivated\" refers to the situation where the CSRF protection provided by the Spring Security framework is disabled.\n\nIn the provided code snippet `csrf().disable().authorizeRequests().anyRequest().permitAll()`, the `csrf().disable()` method call disables CSRF protection. This means that the application is vulnerable to CSRF attacks, as it will not check for the presence of CSRF tokens in the requests it receives.\n\n## Mitigation Advice\n\nTo mitigate this vulnerability, CSRF protection should be enabled. This can be done by removing the `csrf().disable()` method call from the code. With CSRF protection enabled, the application will check for the presence of CSRF tokens in the requests it receives, and reject any requests that do not contain a valid CSRF token.\n\n## Source Code Fix Recommendation\n\nThe fixed code should look like this:\n\n```java\nhttp\n    .authorizeRequests()\n    .anyRequest().permitAll();\n```\n\n## Library Dependencies\n\nThe code example requires the following library dependencies:\n\n- Spring Security\n\n## References\n\n- [OWASP CSRF Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html)\n- [CWE-352: Cross-Site Request Forgery (CSRF)](https://cwe.mitre.org/data/definitions/352.html)"
+              },
+              "properties": {
+                "tags": [
+                  "SPRING_CSRF_PROTECTION_DISABLED"
+                ]
+              }
+            },
+            {
+              "id": "glog-9be97591-6723-46c0-97ca-d28f9582955d",
+              "help": {
+                "text": "",
+                "markdown": "## Description\n\nThe code snippet provided is a configuration for Spring Security in a Java application. The vulnerability in this code is that Cross-Site Request Forgery (CSRF) protection has been disabled. CSRF is an attack that tricks the victim into submitting a malicious request. It uses the identity and privileges of the victim to perform an undesired function on their behalf.\n\nIn the context of Spring Security, CSRF protection is enabled by default. In this case, the method `csrf().disable()` is explicitly disabling CSRF protection, which makes the application vulnerable to CSRF attacks.\n\n## Mitigation Advice\n\nTo mitigate this vulnerability, CSRF protection should be enabled. This can be done by removing the `csrf().disable()` method call from the configuration. Spring Security provides CSRF protection by including a unique token in each request. This token is then validated for each request to ensure that the request is not a CSRF attack.\n\n## Source Code Fix Recommendation\n\nHere is the recommended fix for the code:\n\n```java\nhttp\n    .exceptionHandling().authenticationEntryPoint(unauthorizedHandler)\n    .and()\n    .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)\n    .and()\n    .authorizeRequests()\n    .antMatchers(\"/api-travels/v1/auth/**\", \"/api-travels/v1/users/**\", \"/configuration/security\", \"/webjars/**\", \"/v2/api-docs\", \"/swagger-resources/**\", \"/swagger-ui/**\", \"/manage/**\")\n    .permitAll()\n    .anyRequest().authenticated();\n```\n\n## Library Dependencies\n\nThe code example requires the following library dependencies:\n\n- Spring Security\n- Spring Web\n\n## OWASP and CWE Links\n\n- [OWASP CSRF Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html)\n- [CWE-352: Cross-Site Request Forgery (CSRF)](https://cwe.mitre.org/data/definitions/352.html)"
+              },
+              "properties": {
+                "tags": [
+                  "SPRING_CSRF_PROTECTION_DISABLED"
+                ]
+              }
+            },
+            {
+              "id": "glog-e112eae8-ab59-46e3-a760-e43e51b72379",
+              "help": {
+                "text": "",
+                "markdown": "## Description\n\nThe \"HTTP Headers Not Trustworthy\" vulnerability in Java programming language refers to the security risk associated with trusting HTTP headers without proper validation. HTTP headers are part of the HTTP request and response messages and can be manipulated by an attacker. If your application trusts these headers without validation, it can lead to various security issues such as Cross-Site Scripting (XSS), HTTP Response Splitting, and others.\n\nIn the provided code snippet, the application is retrieving an API key from the HTTP header without any validation:\n\n```java\nString apiKey = request.getHeader(TravelsApiUtil.HEADER_API_KEY);\n```\n\n## Mitigation Advice\n\nTo mitigate this vulnerability, you should never trust HTTP headers and always validate them before use. Validation can include checking for illegal characters, verifying the length, and comparing against a whitelist of expected values.\n\n## Source Code Fix Recommendation\n\nHere is a simple way to validate the API key header:\n\n```java\nString apiKey = request.getHeader(TravelsApiUtil.HEADER_API_KEY);\nif (apiKey == null || !apiKey.matches(\"^[a-zA-Z0-9]{32}$\")) {\n    throw new IllegalArgumentException(\"Invalid API Key\");\n}\n```\n\nIn this example, we are checking if the API key is null or if it doesn't match the regular expression `^[a-zA-Z0-9]{32}$`, which represents a 32-character alphanumeric string. If it doesn't match, an exception is thrown.\n\n## Library Dependencies\n\nThe code example does not provide enough context to determine the exact library dependencies. However, it's likely that the code is part of a web application, which would require a web framework such as Spring, Jakarta EE, or similar. The `request` object is typically provided by these frameworks.\n\n## References\n\n- [CWE-113: Improper Neutralization of CRLF Sequences in HTTP Headers ('HTTP Response Splitting')](https://cwe.mitre.org/data/definitions/113.html)\n- [CWE-20: Improper Input Validation](https://cwe.mitre.org/data/definitions/20.html)"
+              },
+              "properties": {
+                "tags": [
+                  "SERVLET_HEADER"
+                ]
+              }
+            }
+          ],
+          "language": "en-US",
+          "contents": [
+            "localizedData",
+            "nonLocalizedData"
+          ],
+          "isComprehensive": false
+        }
+      },
+      "language": "en-US",
+      "results": [
+        {
+          "ruleId": "glog-9e2d4032-4931-43ab-9f53-acfea6f22505",
+          "kind": "fail",
+          "level": "note",
+          "message": {
+            "text": "Found Spring endpoint",
+            "id": "default",
+            "arguments": [
+              "io.github.mariazevedo88.travelsjavaapi.controller.v1.account.AccountController"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/io/github/mariazevedo88/travelsjavaapi/controller/v1/account/AccountController.java"
+                },
+                "region": {
+                  "startLine": 81,
+                  "endLine": 98
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "create(String, AccountDTO, BindingResult)",
+                  "fullyQualifiedName": "io.github.mariazevedo88.travelsjavaapi.controller.v1.account.AccountController.create(String, AccountDTO, BindingResult)",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "glog-f4621660-c20c-4ef4-8287-81b75e7b30e6",
+          "kind": "fail",
+          "level": "note",
+          "message": {
+            "text": "Found Spring endpoint",
+            "id": "default",
+            "arguments": [
+              "io.github.mariazevedo88.travelsjavaapi.controller.v1.account.AccountController"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/io/github/mariazevedo88/travelsjavaapi/controller/v1/account/AccountController.java"
+                },
+                "region": {
+                  "startLine": 130,
+                  "endLine": 154
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "findByAccountNumber(String, String, String)",
+                  "fullyQualifiedName": "io.github.mariazevedo88.travelsjavaapi.controller.v1.account.AccountController.findByAccountNumber(String, String, String)",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "glog-44ef4543-8d0d-4361-a8fc-867efb1b64b8",
+          "kind": "fail",
+          "level": "note",
+          "message": {
+            "text": "Found Spring endpoint",
+            "id": "default",
+            "arguments": [
+              "io.github.mariazevedo88.travelsjavaapi.controller.v1.account.AccountController"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/io/github/mariazevedo88/travelsjavaapi/controller/v1/account/AccountController.java"
+                },
+                "region": {
+                  "startLine": 183,
+                  "endLine": 200
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "findById(String, String, Long)",
+                  "fullyQualifiedName": "io.github.mariazevedo88.travelsjavaapi.controller.v1.account.AccountController.findById(String, String, Long)",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "glog-fb8805a7-4aa0-4dc7-83c1-bd896a3d25da",
+          "kind": "fail",
+          "level": "note",
+          "message": {
+            "text": "Found Spring endpoint",
+            "id": "default",
+            "arguments": [
+              "io.github.mariazevedo88.travelsjavaapi.controller.v1.security.AuthenticationController"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/io/github/mariazevedo88/travelsjavaapi/controller/v1/security/AuthenticationController.java"
+                },
+                "region": {
+                  "startLine": 75,
+                  "endLine": 93
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "generateTokenJwt(String, JwtUserDTO, BindingResult)",
+                  "fullyQualifiedName": "io.github.mariazevedo88.travelsjavaapi.controller.v1.security.AuthenticationController.generateTokenJwt(String, JwtUserDTO, BindingResult)",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "glog-eb502fdf-029c-42ed-a12b-3cb2b325f298",
+          "kind": "fail",
+          "level": "note",
+          "message": {
+            "text": "Found Spring endpoint",
+            "id": "default",
+            "arguments": [
+              "io.github.mariazevedo88.travelsjavaapi.controller.v1.statistic.StatisticController"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/io/github/mariazevedo88/travelsjavaapi/controller/v1/statistic/StatisticController.java"
+                },
+                "region": {
+                  "startLine": 74,
+                  "endLine": 87
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "create(String, String)",
+                  "fullyQualifiedName": "io.github.mariazevedo88.travelsjavaapi.controller.v1.statistic.StatisticController.create(String, String)",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "glog-bfd5bc22-9a21-4f79-b82d-01222af7d6ab",
+          "kind": "fail",
+          "level": "note",
+          "message": {
+            "text": "Found Spring endpoint",
+            "id": "default",
+            "arguments": [
+              "io.github.mariazevedo88.travelsjavaapi.controller.v1.travel.TravelController"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/io/github/mariazevedo88/travelsjavaapi/controller/v1/travel/TravelController.java"
+                },
+                "region": {
+                  "startLine": 108,
+                  "endLine": 131
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "create(String, String, TravelDTO, BindingResult)",
+                  "fullyQualifiedName": "io.github.mariazevedo88.travelsjavaapi.controller.v1.travel.TravelController.create(String, String, TravelDTO, BindingResult)",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "glog-e5a80435-092f-4a15-986d-bb76b527e62b",
+          "kind": "fail",
+          "level": "note",
+          "message": {
+            "text": "Found Spring endpoint",
+            "id": "default",
+            "arguments": [
+              "io.github.mariazevedo88.travelsjavaapi.controller.v1.travel.TravelController"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/io/github/mariazevedo88/travelsjavaapi/controller/v1/travel/TravelController.java"
+                },
+                "region": {
+                  "startLine": 402,
+                  "endLine": 412
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "delete(String, String, Long)",
+                  "fullyQualifiedName": "io.github.mariazevedo88.travelsjavaapi.controller.v1.travel.TravelController.delete(String, String, Long)",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "glog-bae4ae0a-11a2-458e-a408-7d946997d75b",
+          "kind": "fail",
+          "level": "note",
+          "message": {
+            "text": "Found Spring endpoint",
+            "id": "default",
+            "arguments": [
+              "io.github.mariazevedo88.travelsjavaapi.controller.v1.travel.TravelController"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/io/github/mariazevedo88/travelsjavaapi/controller/v1/travel/TravelController.java"
+                },
+                "region": {
+                  "startLine": 238,
+                  "endLine": 268
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "findAllBetweenDates(String, String, LocalDate, LocalDate, Pageable)",
+                  "fullyQualifiedName": "io.github.mariazevedo88.travelsjavaapi.controller.v1.travel.TravelController.findAllBetweenDates(String, String, LocalDate, LocalDate, Pageable)",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "glog-9ffd3d8f-8e16-4871-957d-0c5963439de2",
+          "kind": "fail",
+          "level": "note",
+          "message": {
+            "text": "Found Spring endpoint",
+            "id": "default",
+            "arguments": [
+              "io.github.mariazevedo88.travelsjavaapi.controller.v1.travel.TravelController"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/io/github/mariazevedo88/travelsjavaapi/controller/v1/travel/TravelController.java"
+                },
+                "region": {
+                  "startLine": 354,
+                  "endLine": 370
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "findById(String, String, Long, String)",
+                  "fullyQualifiedName": "io.github.mariazevedo88.travelsjavaapi.controller.v1.travel.TravelController.findById(String, String, Long, String)",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "glog-c757d3cc-6a45-4d23-9829-1313d3968cc6",
+          "kind": "fail",
+          "level": "note",
+          "message": {
+            "text": "Found Spring endpoint",
+            "id": "default",
+            "arguments": [
+              "io.github.mariazevedo88.travelsjavaapi.controller.v1.travel.TravelController"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/io/github/mariazevedo88/travelsjavaapi/controller/v1/travel/TravelController.java"
+                },
+                "region": {
+                  "startLine": 300,
+                  "endLine": 324
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "findByOrderNumber(String, String, String)",
+                  "fullyQualifiedName": "io.github.mariazevedo88.travelsjavaapi.controller.v1.travel.TravelController.findByOrderNumber(String, String, String)",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "glog-6d448dd3-0e0a-48eb-9f3e-9a39d1dc324f",
+          "kind": "fail",
+          "level": "note",
+          "message": {
+            "text": "Found Spring endpoint",
+            "id": "default",
+            "arguments": [
+              "io.github.mariazevedo88.travelsjavaapi.controller.v1.travel.TravelController"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/io/github/mariazevedo88/travelsjavaapi/controller/v1/travel/TravelController.java"
+                },
+                "region": {
+                  "startLine": 176,
+                  "endLine": 203
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "update(String, String, TravelDTO, BindingResult)",
+                  "fullyQualifiedName": "io.github.mariazevedo88.travelsjavaapi.controller.v1.travel.TravelController.update(String, String, TravelDTO, BindingResult)",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "glog-7c827fa1-9931-48b8-a290-402c0787b55a",
+          "kind": "fail",
+          "level": "note",
+          "message": {
+            "text": "Found Spring endpoint",
+            "id": "default",
+            "arguments": [
+              "io.github.mariazevedo88.travelsjavaapi.controller.v1.user.UserAccountController"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/io/github/mariazevedo88/travelsjavaapi/controller/v1/user/UserAccountController.java"
+                },
+                "region": {
+                  "startLine": 66,
+                  "endLine": 90
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "create(String, UserAccountDTO, BindingResult)",
+                  "fullyQualifiedName": "io.github.mariazevedo88.travelsjavaapi.controller.v1.user.UserAccountController.create(String, UserAccountDTO, BindingResult)",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "glog-5ffcf1e7-7556-47c2-8e47-0331567a1352",
+          "kind": "fail",
+          "level": "note",
+          "message": {
+            "text": "Found Spring endpoint",
+            "id": "default",
+            "arguments": [
+              "io.github.mariazevedo88.travelsjavaapi.controller.v1.user.UserController"
+            ]
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/io/github/mariazevedo88/travelsjavaapi/controller/v1/user/UserController.java"
+                },
+                "region": {
+                  "startLine": 60,
+                  "endLine": 77
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "create(String, UserDTO, BindingResult)",
+                  "fullyQualifiedName": "io.github.mariazevedo88.travelsjavaapi.controller.v1.user.UserController.create(String, UserDTO, BindingResult)",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "glog-851e241a-8e5d-4b71-8cb4-89666828dddd",
+          "kind": "fail",
+          "level": "note",
+          "message": {
+            "text": "HTTP headers untrusted",
+            "id": "default"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/io/github/mariazevedo88/travelsjavaapi/filters/JwtAuthenticationTokenFilter.java"
+                },
+                "region": {
+                  "startLine": 51
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "doFilterInternal(HttpServletRequest, HttpServletResponse, FilterChain)",
+                  "fullyQualifiedName": "io.github.mariazevedo88.travelsjavaapi.filters.JwtAuthenticationTokenFilter.doFilterInternal(HttpServletRequest, HttpServletResponse, FilterChain)",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "glog-a936d97e-0807-4084-8b07-51a966e68a64",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Spring CSRF protection disabled",
+            "id": "default"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/io/github/mariazevedo88/travelsjavaapi/util/config/SecurityConfiguration.java"
+                },
+                "region": {
+                  "startLine": 104
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "configure(HttpSecurity)",
+                  "fullyQualifiedName": "io.github.mariazevedo88.travelsjavaapi.util.config.SecurityConfiguration.configure(HttpSecurity)",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "glog-9be97591-6723-46c0-97ca-d28f9582955d",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Spring CSRF protection disabled",
+            "id": "default"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/io/github/mariazevedo88/travelsjavaapi/util/config/SecurityConfiguration.java"
+                },
+                "region": {
+                  "startLine": 106
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "configure(HttpSecurity)",
+                  "fullyQualifiedName": "io.github.mariazevedo88.travelsjavaapi.util.config.SecurityConfiguration.configure(HttpSecurity)",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "glog-e112eae8-ab59-46e3-a760-e43e51b72379",
+          "kind": "fail",
+          "level": "note",
+          "message": {
+            "text": "HTTP headers untrusted",
+            "id": "default"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/io/github/mariazevedo88/travelsjavaapi/util/interceptor/RateLimitInterceptor.java"
+                },
+                "region": {
+                  "startLine": 41
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "preHandle(HttpServletRequest, HttpServletResponse, Object)",
+                  "fullyQualifiedName": "io.github.mariazevedo88.travelsjavaapi.util.interceptor.RateLimitInterceptor.preHandle(HttpServletRequest, HttpServletResponse, Object)",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "newlineSequences": [
+        "\r\n",
+        "\n"
+      ]
+    }
+  ]
+}
