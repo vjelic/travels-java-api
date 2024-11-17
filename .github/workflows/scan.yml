@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Glog scan
+name: Glog Scan
 
 # Controls when the workflow will run
 on:
@@ -33,7 +33,7 @@ jobs:
       - name: Execute scan
         run: |
           [ -d $GITHUB_WORKSPACE/.glog ] && rm $GITHUB_WORKSPACE/.glog/*
-          export JAVA_HOME=/usr/lib/jvm/jdk-15.0.2
+          export JAVA_HOME=/usr/lib/jvm/java-17-oracle
           mvn clean compile
           /home/vjelic/Documents/Projects/glog-tools/glog.sh scan --path $GITHUB_WORKSPACE --lang java
 
