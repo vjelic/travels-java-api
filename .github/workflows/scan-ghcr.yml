@@ -29,8 +29,8 @@ jobs:
 
       - uses: actions/setup-java@v4
         with:
-          distribution: 'oracle'
-          java-version: '15'
+          distribution: 'temurin'
+          java-version: '11'
           cache: 'maven'
 
       - name: Compile project
