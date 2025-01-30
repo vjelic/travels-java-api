@@ -34,7 +34,7 @@ jobs:
           cache: 'maven'
 
       - name: Compile project
-        run: mvn clean compile
+        run: mvn clean compile -DskipTests
 
       - name: Authenticate to GitHub Container Registry
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
