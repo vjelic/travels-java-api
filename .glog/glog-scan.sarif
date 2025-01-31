@@ -12,7 +12,7 @@
           "informationUri": "https://www.glog.ai",
           "rules": [
             {
-              "id": "glog-03f79959-fbdb-4051-b667-4caa2b5eed49",
+              "id": "glog-88db42b4-2b57-46f9-a85f-9c5b3ee073ba",
               "help": {
                 "text": "",
                 "markdown": "\nThis class is a Spring Controller. All methods annotated with `RequestMapping` (as well as its shortcut annotations `GetMapping`, `PostMapping`, `PutMapping`, `DeleteMapping`, and `PatchMapping`) are reachable remotely. This class should be analyzed to make sure that remotely exposed methods are safe to expose to potential attackers.\n\nPerform input validation to ensure only properly formed data is entering the workflow in an information system, preventing malformed data from persisting in the database and triggering malfunction of various downstream components. Input validation should happen as early as possible in the data flow, preferably as soon as the data is received from the external party.\n\nData from all potentially untrusted sources should be subject to input validation, including not only Internet-facing web clients but also backend feeds over extranets, from suppliers, partners, vendors or regulators, each of which may be compromised on their own and start sending malformed data.\n\n\n## Solution (Bean Validation)\n\n```java\npublic class ExampleDto implements Serializable {\n    @Pattern(regexp = \"white list regular expression\")\n    @Size(min = minimum field size, max = maximum field size)\n    private String fieldName;\n}\n```\n\n## Solution (Validation Service or Method)\n\n```java\npublic boolean validateData(string data, String whiteListRegex) {\n    Pattern p = Pattern.compile(whiteListRegex);\n    Matcher m = p.matcher(data);\n    return m.matches();\n}\n```\n\n\n\n## References\n- [OWASP: REST Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html)\n- [OWASP: Input Validation Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html)\n- [OWASP: Bean Validation Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Bean_Validation_Cheat_Sheet.html)\n\n\n"
@@ -24,7 +24,7 @@
               }
             },
             {
-              "id": "glog-9057352e-f2ea-4db4-af03-c6b362205267",
+              "id": "glog-714d63e7-dce7-4eb5-801d-2b5c161ec84c",
               "help": {
                 "text": "",
                 "markdown": "\nThis class is a Spring Controller. All methods annotated with `RequestMapping` (as well as its shortcut annotations `GetMapping`, `PostMapping`, `PutMapping`, `DeleteMapping`, and `PatchMapping`) are reachable remotely. This class should be analyzed to make sure that remotely exposed methods are safe to expose to potential attackers.\n\nPerform input validation to ensure only properly formed data is entering the workflow in an information system, preventing malformed data from persisting in the database and triggering malfunction of various downstream components. Input validation should happen as early as possible in the data flow, preferably as soon as the data is received from the external party.\n\nData from all potentially untrusted sources should be subject to input validation, including not only Internet-facing web clients but also backend feeds over extranets, from suppliers, partners, vendors or regulators, each of which may be compromised on their own and start sending malformed data.\n\n\n## Solution (Bean Validation)\n\n```java\npublic class ExampleDto implements Serializable {\n    @Pattern(regexp = \"white list regular expression\")\n    @Size(min = minimum field size, max = maximum field size)\n    private String fieldName;\n}\n```\n\n## Solution (Validation Service or Method)\n\n```java\npublic boolean validateData(string data, String whiteListRegex) {\n    Pattern p = Pattern.compile(whiteListRegex);\n    Matcher m = p.matcher(data);\n    return m.matches();\n}\n```\n\n\n## In Context Remediation\n```\nField name: apiVersion\nValidation regex: apiVersion=\"^[0-9]+(\\.[0-9]+)*$\"\nMinimum length: 1\nMaximum length: 100\n```\n```\nField name: apiKey\nValidation regex: apiKey=\"^[a-zA-Z0-9-_]{32}$\"\nMinimum length: 6\nMaximum length: 32\n```\n```\nField name: accountNumber\nValidation regex: accountNumber=\"^[0-9]+$\"\nMinimum length: 1\nMaximum length: 34\n```\nHere is a simple console application that validates the \"accountNumber\" parameter using a custom validation service. The application uses Spring Boot and Lombok libraries.\n\n```java\nimport org.springframework.http.ResponseEntity;\nimport org.springframework.web.bind.annotation.PathVariable;\nimport org.springframework.web.bind.annotation.RequestHeader;\nimport org.springframework.web.bind.annotation.RestController;\nimport lombok.RequiredArgsConstructor;\nimport java.util.regex.Pattern;\n\n@RestController\n@RequiredArgsConstructor\npublic class AccountController {\n\n    private static final String ACCOUNT_NUMBER_PATTERN = \"^[0-9]+$\";\n    private static final int MIN_LENGTH = 1;\n    private static final int MAX_LENGTH = 34;\n\n    public ResponseEntity<String> findByAccountNumber(\n            @RequestHeader(value = \"apiVersion\", defaultValue = \"${api.version}\") String apiVersion,\n            @RequestHeader(value = \"apiKey\", defaultValue = \"${api.key}\") String apiKey,\n            @PathVariable(\"number\") String accountNumber) {\n\n        if (!isValidAccountNumber(accountNumber)) {\n            throw new IllegalArgumentException(\"Invalid account number\");\n        }\n\n        // Rest of the method implementation\n        return ResponseEntity.ok(\"Valid account number\");\n    }\n\n    private boolean isValidAccountNumber(String accountNumber) {\n        return accountNumber.length() >= MIN_LENGTH &&\n                accountNumber.length() <= MAX_LENGTH &&\n                Pattern.matches(ACCOUNT_NUMBER_PATTERN, accountNumber);\n    }\n}\n```\n\nTo run this application, you need the following dependencies:\n\n- Spring Boot Starter Web: It provides all the dependencies and auto-configuration needed to develop web applications.\n- Lombok: It is a library that helps to reduce boilerplate code.\n\nYou can add these dependencies to your Maven `pom.xml` file:\n\n```xml\n<dependencies>\n    <dependency>\n        <groupId>org.springframework.boot</groupId>\n        <artifactId>spring-boot-starter-web</artifactId>\n    </dependency>\n    <dependency>\n        <groupId>org.projectlombok</groupId>\n        <artifactId>lombok</artifactId>\n        <optional>true</optional>\n    </dependency>\n</dependencies>\n```\n\nPlease note that this is a simplified example and does not include the full implementation of the `findByAccountNumber` method. Also, the exception handling is not robust and is only used for demonstration purposes.\n\n\n\n## References\n- [OWASP: REST Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html)\n- [OWASP: Input Validation Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html)\n- [OWASP: Bean Validation Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Bean_Validation_Cheat_Sheet.html)\n\n\n"
@@ -36,7 +36,7 @@
               }
             },
             {
-              "id": "glog-e082db00-9e35-4f10-9d62-b499974a913e",
+              "id": "glog-c8039e16-53a7-403a-83de-b9e2ffa486e9",
               "help": {
                 "text": "",
                 "markdown": "\nThis class is a Spring Controller. All methods annotated with `RequestMapping` (as well as its shortcut annotations `GetMapping`, `PostMapping`, `PutMapping`, `DeleteMapping`, and `PatchMapping`) are reachable remotely. This class should be analyzed to make sure that remotely exposed methods are safe to expose to potential attackers.\n\nPerform input validation to ensure only properly formed data is entering the workflow in an information system, preventing malformed data from persisting in the database and triggering malfunction of various downstream components. Input validation should happen as early as possible in the data flow, preferably as soon as the data is received from the external party.\n\nData from all potentially untrusted sources should be subject to input validation, including not only Internet-facing web clients but also backend feeds over extranets, from suppliers, partners, vendors or regulators, each of which may be compromised on their own and start sending malformed data.\n\n\n## Solution (Bean Validation)\n\n```java\npublic class ExampleDto implements Serializable {\n    @Pattern(regexp = \"white list regular expression\")\n    @Size(min = minimum field size, max = maximum field size)\n    private String fieldName;\n}\n```\n\n## Solution (Validation Service or Method)\n\n```java\npublic boolean validateData(string data, String whiteListRegex) {\n    Pattern p = Pattern.compile(whiteListRegex);\n    Matcher m = p.matcher(data);\n    return m.matches();\n}\n```\n\n\n## In Context Remediation\n```\nField name: apiVersion\nValidation regex: apiVersion=\"^[0-9.]+$\"\nMinimum length: 1\nMaximum length: 100\n```\n```\nField name: apiKey\nValidation regex: apiKey=\"^[a-zA-Z0-9-]+$\"\nMinimum length: 32\nMaximum length: 32\n```\nHere is a simple example of how you can validate the apiKey parameter using a custom validation service. This example is a console application written in Java.\n\n```java\nimport java.util.regex.Pattern;\nimport org.springframework.http.ResponseEntity;\nimport org.springframework.web.bind.annotation.PathVariable;\nimport org.springframework.web.bind.annotation.RequestHeader;\nimport org.springframework.web.bind.annotation.RestController;\n\n@RestController\npublic class AccountController {\n\n    private static final String API_KEY_PATTERN = \"^[a-zA-Z0-9-]+$\";\n    private static final int API_KEY_LENGTH = 32;\n\n    public ResponseEntity<Response<AccountDTO>> findById(\n            @RequestHeader(value = TravelsApiUtil.HEADER_TRAVELS_API_VERSION, defaultValue = \"${api.version}\") String apiVersion,\n            @RequestHeader(value = TravelsApiUtil.HEADER_API_KEY, defaultValue = \"${api.key}\") String apiKey,\n            @PathVariable(\"id\") Long accountId) throws AccountNotFoundException {\n\n        if (!isValidApiKey(apiKey)) {\n            throw new IllegalArgumentException(\"Invalid API Key\");\n        }\n\n        // Rest of the method implementation\n    }\n\n    private boolean isValidApiKey(String apiKey) {\n        return Pattern.matches(API_KEY_PATTERN, apiKey) && apiKey.length() == API_KEY_LENGTH;\n    }\n}\n```\n\nThis example uses Spring Boot framework, so you need to include the following dependencies in your `pom.xml` file:\n\n```xml\n<dependencies>\n    <dependency>\n        <groupId>org.springframework.boot</groupId>\n        <artifactId>spring-boot-starter-web</artifactId>\n    </dependency>\n</dependencies>\n```\n\nIn this example, the `isValidApiKey` method checks if the apiKey matches the provided regex pattern and if its length is exactly 32 characters. If the apiKey is not valid, an `IllegalArgumentException` is thrown.\n\n\n\n## References\n- [OWASP: REST Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html)\n- [OWASP: Input Validation Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html)\n- [OWASP: Bean Validation Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Bean_Validation_Cheat_Sheet.html)\n\n\n"
@@ -48,7 +48,7 @@
               }
             },
             {
-              "id": "glog-f651b737-e27f-4f6d-bda9-117bae3c6fdb",
+              "id": "glog-4cdf92d3-2c86-40c1-a629-361431eddb8f",
               "help": {
                 "text": "",
                 "markdown": "\nThis class is a Spring Controller. All methods annotated with `RequestMapping` (as well as its shortcut annotations `GetMapping`, `PostMapping`, `PutMapping`, `DeleteMapping`, and `PatchMapping`) are reachable remotely. This class should be analyzed to make sure that remotely exposed methods are safe to expose to potential attackers.\n\nPerform input validation to ensure only properly formed data is entering the workflow in an information system, preventing malformed data from persisting in the database and triggering malfunction of various downstream components. Input validation should happen as early as possible in the data flow, preferably as soon as the data is received from the external party.\n\nData from all potentially untrusted sources should be subject to input validation, including not only Internet-facing web clients but also backend feeds over extranets, from suppliers, partners, vendors or regulators, each of which may be compromised on their own and start sending malformed data.\n\n\n## Solution (Bean Validation)\n\n```java\npublic class ExampleDto implements Serializable {\n    @Pattern(regexp = \"white list regular expression\")\n    @Size(min = minimum field size, max = maximum field size)\n    private String fieldName;\n}\n```\n\n## Solution (Validation Service or Method)\n\n```java\npublic boolean validateData(string data, String whiteListRegex) {\n    Pattern p = Pattern.compile(whiteListRegex);\n    Matcher m = p.matcher(data);\n    return m.matches();\n}\n```\n\n\n\n## References\n- [OWASP: REST Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html)\n- [OWASP: Input Validation Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html)\n- [OWASP: Bean Validation Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Bean_Validation_Cheat_Sheet.html)\n\n\n"
@@ -60,7 +60,7 @@
               }
             },
             {
-              "id": "glog-6b8b46a1-b2a6-440e-9c2d-d087da8d7516",
+              "id": "glog-0bcdd0cc-dc2c-44e7-9c5e-52b982dcb3e8",
               "help": {
                 "text": "",
                 "markdown": "\nThis class is a Spring Controller. All methods annotated with `RequestMapping` (as well as its shortcut annotations `GetMapping`, `PostMapping`, `PutMapping`, `DeleteMapping`, and `PatchMapping`) are reachable remotely. This class should be analyzed to make sure that remotely exposed methods are safe to expose to potential attackers.\n\nPerform input validation to ensure only properly formed data is entering the workflow in an information system, preventing malformed data from persisting in the database and triggering malfunction of various downstream components. Input validation should happen as early as possible in the data flow, preferably as soon as the data is received from the external party.\n\nData from all potentially untrusted sources should be subject to input validation, including not only Internet-facing web clients but also backend feeds over extranets, from suppliers, partners, vendors or regulators, each of which may be compromised on their own and start sending malformed data.\n\n\n## Solution (Bean Validation)\n\n```java\npublic class ExampleDto implements Serializable {\n    @Pattern(regexp = \"white list regular expression\")\n    @Size(min = minimum field size, max = maximum field size)\n    private String fieldName;\n}\n```\n\n## Solution (Validation Service or Method)\n\n```java\npublic boolean validateData(string data, String whiteListRegex) {\n    Pattern p = Pattern.compile(whiteListRegex);\n    Matcher m = p.matcher(data);\n    return m.matches();\n}\n```\n\n\n## In Context Remediation\n```\nField name: apiVersion\nValidation regex: apiVersion=\"^[0-9]+(\\.[0-9]+)*$\"\nMinimum length: 1\nMaximum length: 10\n```\n```\nField name: apiKey\nValidation regex: apiKey=\"^[a-zA-Z0-9-]+$\"\nMinimum length: 32\nMaximum length: 32\n```\nHere is a simple example of how you can validate the apiKey parameter using a custom validation service. This example is a console application written in Java.\n\n```java\nimport org.springframework.http.ResponseEntity;\nimport org.springframework.web.bind.annotation.RequestHeader;\nimport org.springframework.web.bind.annotation.RestController;\nimport io.github.mariazevedo88.travelsjavaapi.dto.statistic.StatisticDTO;\nimport io.github.mariazevedo88.travelsjavaapi.util.TravelsApiUtil;\nimport io.github.mariazevedo88.travelsjavaapi.response.Response;\n\n@RestController\npublic class StatisticController {\n\n    public ResponseEntity<Response<StatisticDTO>> create(\n        @RequestHeader(value = TravelsApiUtil.HEADER_TRAVELS_API_VERSION, defaultValue = \"${api.version}\") String apiVersion, \n        @RequestHeader(value = TravelsApiUtil.HEADER_API_KEY, defaultValue = \"${api.key}\") String apiKey) {\n        \n        if (!ValidationService.isValidApiKey(apiKey)) {\n            throw new IllegalArgumentException(\"Invalid API Key\");\n        }\n        \n        // Rest of the method implementation\n    }\n}\n\npublic class ValidationService {\n\n    private static final String API_KEY_PATTERN = \"^[a-zA-Z0-9-]+$\";\n\n    public static boolean isValidApiKey(String apiKey) {\n        return apiKey.matches(API_KEY_PATTERN) && apiKey.length() == 32;\n    }\n}\n```\n\nDependencies needed to run this application:\n\n- Spring Boot Starter Web\n- Spring Boot Starter Validation\n\nYou can add these dependencies to your Maven `pom.xml` file:\n\n```xml\n<dependencies>\n    <dependency>\n        <groupId>org.springframework.boot</groupId>\n        <artifactId>spring-boot-starter-web</artifactId>\n    </dependency>\n    <dependency>\n        <groupId>org.springframework.boot</groupId>\n        <artifactId>spring-boot-starter-validation</artifactId>\n    </dependency>\n</dependencies>\n```\n\nPlease note that this is a simplified example and does not include the full implementation of the `create` method or the `Response` and `StatisticDTO` classes. Also, the `TravelsApiUtil` class and its constants are assumed to be correctly defined.\n\n\n\n## References\n- [OWASP: REST Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html)\n- [OWASP: Input Validation Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html)\n- [OWASP: Bean Validation Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Bean_Validation_Cheat_Sheet.html)\n\n\n"
@@ -72,7 +72,7 @@
               }
             },
             {
-              "id": "glog-d47c2798-11a0-41d6-b991-d0d81d83387c",
+              "id": "glog-18809a48-432a-4ff2-8994-d0fbc0540782",
               "help": {
                 "text": "",
                 "markdown": "\nThis class is a Spring Controller. All methods annotated with `RequestMapping` (as well as its shortcut annotations `GetMapping`, `PostMapping`, `PutMapping`, `DeleteMapping`, and `PatchMapping`) are reachable remotely. This class should be analyzed to make sure that remotely exposed methods are safe to expose to potential attackers.\n\nPerform input validation to ensure only properly formed data is entering the workflow in an information system, preventing malformed data from persisting in the database and triggering malfunction of various downstream components. Input validation should happen as early as possible in the data flow, preferably as soon as the data is received from the external party.\n\nData from all potentially untrusted sources should be subject to input validation, including not only Internet-facing web clients but also backend feeds over extranets, from suppliers, partners, vendors or regulators, each of which may be compromised on their own and start sending malformed data.\n\n\n## Solution (Bean Validation)\n\n```java\npublic class ExampleDto implements Serializable {\n    @Pattern(regexp = \"white list regular expression\")\n    @Size(min = minimum field size, max = maximum field size)\n    private String fieldName;\n}\n```\n\n## Solution (Validation Service or Method)\n\n```java\npublic boolean validateData(string data, String whiteListRegex) {\n    Pattern p = Pattern.compile(whiteListRegex);\n    Matcher m = p.matcher(data);\n    return m.matches();\n}\n```\n\n\n\n## References\n- [OWASP: REST Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html)\n- [OWASP: Input Validation Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html)\n- [OWASP: Bean Validation Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Bean_Validation_Cheat_Sheet.html)\n\n\n"
@@ -84,7 +84,7 @@
               }
             },
             {
-              "id": "glog-bd1d9fdd-e508-4d10-889b-bf03cc76feb9",
+              "id": "glog-4b93a66b-09ba-434e-b179-47b5bb3826e9",
               "help": {
                 "text": "",
                 "markdown": "\nThis class is a Spring Controller. All methods annotated with `RequestMapping` (as well as its shortcut annotations `GetMapping`, `PostMapping`, `PutMapping`, `DeleteMapping`, and `PatchMapping`) are reachable remotely. This class should be analyzed to make sure that remotely exposed methods are safe to expose to potential attackers.\n\nPerform input validation to ensure only properly formed data is entering the workflow in an information system, preventing malformed data from persisting in the database and triggering malfunction of various downstream components. Input validation should happen as early as possible in the data flow, preferably as soon as the data is received from the external party.\n\nData from all potentially untrusted sources should be subject to input validation, including not only Internet-facing web clients but also backend feeds over extranets, from suppliers, partners, vendors or regulators, each of which may be compromised on their own and start sending malformed data.\n\n\n## Solution (Bean Validation)\n\n```java\npublic class ExampleDto implements Serializable {\n    @Pattern(regexp = \"white list regular expression\")\n    @Size(min = minimum field size, max = maximum field size)\n    private String fieldName;\n}\n```\n\n## Solution (Validation Service or Method)\n\n```java\npublic boolean validateData(string data, String whiteListRegex) {\n    Pattern p = Pattern.compile(whiteListRegex);\n    Matcher m = p.matcher(data);\n    return m.matches();\n}\n```\n\n\n## In Context Remediation\n```\nField name: apiVersion\nValidation regex: apiVersion=\"^[0-9.]+$\"\nMinimum length: 1\nMaximum length: 10\n```\n```\nField name: apiKey\nValidation regex: apiKey=\"^[a-zA-Z0-9-]+$\"\nMinimum length: 6\nMaximum length: 32\n```\nHere is a simple example of how you can validate the `apiKey` parameter using a custom validation service. This example is a console application written in Java.\n\n```java\nimport org.springframework.http.ResponseEntity;\nimport org.springframework.web.bind.annotation.RequestHeader;\nimport org.springframework.web.bind.annotation.PathVariable;\nimport org.springframework.web.bind.annotation.DeleteMapping;\nimport org.springframework.web.bind.annotation.RestController;\nimport java.util.regex.Pattern;\nimport java.util.regex.Matcher;\n\n@RestController\npublic class TravelController {\n\n    private static final String API_KEY_PATTERN = \"^[a-zA-Z0-9-]+$\";\n\n    @DeleteMapping(\"/travel/{id}\")\n    public ResponseEntity<String> delete(\n        @RequestHeader(value = \"api-version\", defaultValue = \"${api.version}\") String apiVersion,\n        @RequestHeader(value = \"api-key\", defaultValue = \"${api.key}\") String apiKey,\n        @PathVariable(\"id\") Long travelId) throws Exception {\n\n        if (!isValidApiKey(apiKey)) {\n            throw new Exception(\"Invalid API Key\");\n        }\n\n        // Delete travel logic here\n\n        return ResponseEntity.ok(\"Travel deleted successfully\");\n    }\n\n    private boolean isValidApiKey(String apiKey) {\n        if (apiKey.length() < 6 || apiKey.length() > 32) {\n            return false;\n        }\n\n        Pattern pattern = Pattern.compile(API_KEY_PATTERN);\n        Matcher matcher = pattern.matcher(apiKey);\n        return matcher.matches();\n    }\n}\n```\n\nThis example uses Spring Boot for the REST API. The `delete` method in `TravelController` class receives the `apiKey` as a header parameter. The `isValidApiKey` method validates the `apiKey` using the provided regex pattern and length constraints.\n\nDependencies needed to run this application:\n\n- Java 8 or later\n- Spring Boot Starter Web\n- Spring Boot Starter Validation\n\nYou can add these dependencies to your `pom.xml` file if you are using Maven:\n\n```xml\n<dependencies>\n    <dependency>\n        <groupId>org.springframework.boot</groupId>\n        <artifactId>spring-boot-starter-web</artifactId>\n    </dependency>\n    <dependency>\n        <groupId>org.springframework.boot</groupId>\n        <artifactId>spring-boot-starter-validation</artifactId>\n    </dependency>\n</dependencies>\n```\n\nPlease note that this is a simple example and does not include error handling or other best practices for building a production-ready application.\n\n\n\n## References\n- [OWASP: REST Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html)\n- [OWASP: Input Validation Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html)\n- [OWASP: Bean Validation Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Bean_Validation_Cheat_Sheet.html)\n\n\n"
@@ -96,7 +96,7 @@
               }
             },
             {
-              "id": "glog-22539732-9f8a-4815-8d0d-b345a2913bf0",
+              "id": "glog-6355e6bc-7a96-496d-8d09-1169685b3384",
               "help": {
                 "text": "",
                 "markdown": "\nThis class is a Spring Controller. All methods annotated with `RequestMapping` (as well as its shortcut annotations `GetMapping`, `PostMapping`, `PutMapping`, `DeleteMapping`, and `PatchMapping`) are reachable remotely. This class should be analyzed to make sure that remotely exposed methods are safe to expose to potential attackers.\n\nPerform input validation to ensure only properly formed data is entering the workflow in an information system, preventing malformed data from persisting in the database and triggering malfunction of various downstream components. Input validation should happen as early as possible in the data flow, preferably as soon as the data is received from the external party.\n\nData from all potentially untrusted sources should be subject to input validation, including not only Internet-facing web clients but also backend feeds over extranets, from suppliers, partners, vendors or regulators, each of which may be compromised on their own and start sending malformed data.\n\n\n## Solution (Bean Validation)\n\n```java\npublic class ExampleDto implements Serializable {\n    @Pattern(regexp = \"white list regular expression\")\n    @Size(min = minimum field size, max = maximum field size)\n    private String fieldName;\n}\n```\n\n## Solution (Validation Service or Method)\n\n```java\npublic boolean validateData(string data, String whiteListRegex) {\n    Pattern p = Pattern.compile(whiteListRegex);\n    Matcher m = p.matcher(data);\n    return m.matches();\n}\n```\n\n\n## In Context Remediation\n```\nField name: apiVersion\nValidation regex: apiVersion=\"^[0-9]+(\\.[0-9]+)*$\"\nMinimum length: 1\nMaximum length: 10\n```\n```\nField name: apiKey\nValidation regex: apiKey=\"^[a-zA-Z0-9-_]{32}$\"\nMinimum length: 6\nMaximum length: 32\n```\nHere is a simple example of how you can validate the apiKey parameter using a custom validation service. This example is a console application written in Java.\n\n```java\nimport org.springframework.http.ResponseEntity;\nimport org.springframework.data.domain.Pageable;\nimport org.springframework.data.web.PageableDefault;\nimport org.springframework.format.annotation.DateTimeFormat;\nimport org.springframework.web.bind.annotation.RequestHeader;\nimport org.springframework.web.bind.annotation.RequestParam;\nimport org.springframework.web.bind.annotation.RestController;\nimport java.time.LocalDate;\nimport java.util.List;\nimport java.util.regex.Pattern;\n\n@RestController\npublic class TravelController {\n\n    private static final String API_KEY_PATTERN = \"^[a-zA-Z0-9-_]{6,32}$\";\n\n    public ResponseEntity<Response<List<TravelDTO>>> findAllBetweenDates(\n            @RequestHeader(value = TravelsApiUtil.HEADER_TRAVELS_API_VERSION, defaultValue = \"${api.version}\") String apiVersion,\n            @RequestHeader(value = TravelsApiUtil.HEADER_API_KEY, defaultValue = \"${api.key}\") String apiKey,\n            @RequestParam @DateTimeFormat(pattern = \"yyyy-MM-dd\") LocalDate startDate,\n            @RequestParam @DateTimeFormat(pattern = \"yyyy-MM-dd\") LocalDate endDate,\n            @PageableDefault(page = 1, size = 10, sort = { \"id\" }) Pageable pageable) throws TravelNotFoundException {\n\n        if (!isValidApiKey(apiKey)) {\n            throw new InvalidApiKeyException(\"Invalid API Key\");\n        }\n\n        // Rest of the method implementation\n    }\n\n    private boolean isValidApiKey(String apiKey) {\n        return Pattern.matches(API_KEY_PATTERN, apiKey);\n    }\n}\n```\n\nThis example uses Spring Boot, so you will need the following dependencies:\n\n- Spring Boot Starter Web\n- Spring Boot Starter Data JPA\n- Spring Boot Starter Validation\n\nYou can add these dependencies to your Maven pom.xml file:\n\n```xml\n<dependencies>\n    <dependency>\n        <groupId>org.springframework.boot</groupId>\n        <artifactId>spring-boot-starter-web</artifactId>\n    </dependency>\n    <dependency>\n        <groupId>org.springframework.boot</groupId>\n        <artifactId>spring-boot-starter-data-jpa</artifactId>\n    </dependency>\n    <dependency>\n        <groupId>org.springframework.boot</groupId>\n        <artifactId>spring-boot-starter-validation</artifactId>\n    </dependency>\n</dependencies>\n```\n\nPlease note that this is a simplified example and does not include the implementation of the `Response`, `TravelDTO`, `TravelsApiUtil`, `TravelNotFoundException`, and `InvalidApiKeyException` classes. You would need to implement these classes according to your application's requirements.\n\n\n\n## References\n- [OWASP: REST Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html)\n- [OWASP: Input Validation Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html)\n- [OWASP: Bean Validation Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Bean_Validation_Cheat_Sheet.html)\n\n\n"
@@ -108,7 +108,7 @@
               }
             },
             {
-              "id": "glog-c5db1b58-799b-44ba-9961-e0563231e5e0",
+              "id": "glog-87ddbe13-dfe0-4dce-9457-39a2777a4096",
               "help": {
                 "text": "",
                 "markdown": "\nThis class is a Spring Controller. All methods annotated with `RequestMapping` (as well as its shortcut annotations `GetMapping`, `PostMapping`, `PutMapping`, `DeleteMapping`, and `PatchMapping`) are reachable remotely. This class should be analyzed to make sure that remotely exposed methods are safe to expose to potential attackers.\n\nPerform input validation to ensure only properly formed data is entering the workflow in an information system, preventing malformed data from persisting in the database and triggering malfunction of various downstream components. Input validation should happen as early as possible in the data flow, preferably as soon as the data is received from the external party.\n\nData from all potentially untrusted sources should be subject to input validation, including not only Internet-facing web clients but also backend feeds over extranets, from suppliers, partners, vendors or regulators, each of which may be compromised on their own and start sending malformed data.\n\n\n## Solution (Bean Validation)\n\n```java\npublic class ExampleDto implements Serializable {\n    @Pattern(regexp = \"white list regular expression\")\n    @Size(min = minimum field size, max = maximum field size)\n    private String fieldName;\n}\n```\n\n## Solution (Validation Service or Method)\n\n```java\npublic boolean validateData(string data, String whiteListRegex) {\n    Pattern p = Pattern.compile(whiteListRegex);\n    Matcher m = p.matcher(data);\n    return m.matches();\n}\n```\n\n\n## In Context Remediation\n```\nField name: apiVersion\nValidation regex: apiVersion=\"^[0-9a-zA-Z.]+$\"\nMinimum length: 1\nMaximum length: 11\n```\n```\nField name: apiKey\nValidation regex: apiKey=\"^[a-zA-Z0-9-]+$\"\nMinimum length: 6\nMaximum length: 32\n```\n```\nField name: fields\nValidation regex: fields=\"^[a-zA-Z0-9._%+-]*$\"\nMinimum length: 1\nMaximum length: 6\n```\nHere is a simple example of how you can validate the \"fields\" parameter using a custom validation method. This example is a console application written in Java.\n\n```java\nimport org.springframework.http.ResponseEntity;\nimport org.springframework.web.bind.annotation.PathVariable;\nimport org.springframework.web.bind.annotation.RequestHeader;\nimport org.springframework.web.bind.annotation.RequestParam;\nimport org.springframework.web.bind.annotation.RestController;\nimport java.util.regex.Pattern;\n\n@RestController\npublic class TravelController {\n\n    private static final String FIELDS_PATTERN = \"^[a-zA-Z0-9._%+-]*$\";\n\n    public ResponseEntity<String> findById(\n            @RequestHeader(value = \"apiVersion\", defaultValue = \"${api.version}\") String apiVersion,\n            @RequestHeader(value = \"apiKey\", defaultValue = \"${api.key}\") String apiKey,\n            @PathVariable(\"id\") Long travelId,\n            @RequestParam(required = false) String fields) throws Exception {\n\n        if (!isValidFields(fields)) {\n            throw new Exception(\"Invalid fields parameter\");\n        }\n\n        // Rest of the method implementation\n        return ResponseEntity.ok(\"Valid fields parameter\");\n    }\n\n    private boolean isValidFields(String fields) {\n        if (fields == null || fields.length() < 1 || fields.length() > 6) {\n            return false;\n        }\n\n        Pattern pattern = Pattern.compile(FIELDS_PATTERN);\n        return pattern.matcher(fields).matches();\n    }\n}\n```\n\nThis example uses Spring Boot framework, so you need to include the following dependencies in your `pom.xml` file:\n\n```xml\n<dependencies>\n    <dependency>\n        <groupId>org.springframework.boot</groupId>\n        <artifactId>spring-boot-starter-web</artifactId>\n    </dependency>\n</dependencies>\n```\n\nThis example assumes that you have a Spring Boot application set up. The `TravelController` class is annotated with `@RestController` to indicate that it's a controller class. The `findById` method is assumed to be mapped to a specific URL via `@RequestMapping` or `@GetMapping` annotation (not shown in the example for brevity). The `fields` parameter is validated in the `isValidFields` method. If the validation fails, an exception is thrown.\n\n\n\n## References\n- [OWASP: REST Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html)\n- [OWASP: Input Validation Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html)\n- [OWASP: Bean Validation Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Bean_Validation_Cheat_Sheet.html)\n\n\n"
@@ -120,7 +120,7 @@
               }
             },
             {
-              "id": "glog-53f20e2b-7f57-4788-9d30-09aaeb6c6fc0",
+              "id": "glog-f667f447-2876-409d-a310-2001ca80ddfb",
               "help": {
                 "text": "",
                 "markdown": "\nThis class is a Spring Controller. All methods annotated with `RequestMapping` (as well as its shortcut annotations `GetMapping`, `PostMapping`, `PutMapping`, `DeleteMapping`, and `PatchMapping`) are reachable remotely. This class should be analyzed to make sure that remotely exposed methods are safe to expose to potential attackers.\n\nPerform input validation to ensure only properly formed data is entering the workflow in an information system, preventing malformed data from persisting in the database and triggering malfunction of various downstream components. Input validation should happen as early as possible in the data flow, preferably as soon as the data is received from the external party.\n\nData from all potentially untrusted sources should be subject to input validation, including not only Internet-facing web clients but also backend feeds over extranets, from suppliers, partners, vendors or regulators, each of which may be compromised on their own and start sending malformed data.\n\n\n## Solution (Bean Validation)\n\n```java\npublic class ExampleDto implements Serializable {\n    @Pattern(regexp = \"white list regular expression\")\n    @Size(min = minimum field size, max = maximum field size)\n    private String fieldName;\n}\n```\n\n## Solution (Validation Service or Method)\n\n```java\npublic boolean validateData(string data, String whiteListRegex) {\n    Pattern p = Pattern.compile(whiteListRegex);\n    Matcher m = p.matcher(data);\n    return m.matches();\n}\n```\n\n\n## In Context Remediation\n```\nField name: apiVersion\nValidation regex: apiVersion=\"^[0-9a-zA-Z.]+$\"\nMinimum length: 1\nMaximum length: 10\n```\n```\nField name: apiKey\nValidation regex: apiKey=\"^[a-zA-Z0-9-]+$\"\nMinimum length: 6\nMaximum length: 32\n```\n```\nField name: travelOrderNumber\nValidation regex: travelOrderNumber=\"^[a-zA-Z0-9._%+-]+$\"\nMinimum length: 1\nMaximum length: 32\n```\nHere is a simple example of how you can validate the `travelOrderNumber` parameter using a custom validation service. This example is a console application written in Java.\n\n```java\nimport java.util.regex.Pattern;\nimport org.springframework.http.ResponseEntity;\nimport org.springframework.web.bind.annotation.PathVariable;\nimport org.springframework.web.bind.annotation.RequestHeader;\nimport io.github.mariazevedo88.travelsjavaapi.controller.v1.travel.TravelController;\nimport io.github.mariazevedo88.travelsjavaapi.dto.TravelDTO;\nimport io.github.mariazevedo88.travelsjavaapi.exception.TravelNotFoundException;\nimport io.github.mariazevedo88.travelsjavaapi.util.TravelsApiUtil;\n\npublic class TravelController {\n\n    private static final String TRAVEL_ORDER_NUMBER_PATTERN = \"^[a-zA-Z0-9._%+-]+$\";\n\n    public ResponseEntity<Response<List<TravelDTO>>> findByOrderNumber(\n        @RequestHeader(value = TravelsApiUtil.HEADER_TRAVELS_API_VERSION, defaultValue = \"${api.version}\") String apiVersion, \n        @RequestHeader(value = TravelsApiUtil.HEADER_API_KEY, defaultValue = \"${api.key}\") String apiKey, \n        @PathVariable(\"orderNumber\") String travelOrderNumber) throws TravelNotFoundException {\n\n        if (!isValidTravelOrderNumber(travelOrderNumber)) {\n            throw new IllegalArgumentException(\"Invalid travel order number\");\n        }\n\n        // Rest of the method implementation\n    }\n\n    private boolean isValidTravelOrderNumber(String travelOrderNumber) {\n        if (travelOrderNumber.length() < 1 || travelOrderNumber.length() > 32) {\n            return false;\n        }\n\n        Pattern pattern = Pattern.compile(TRAVEL_ORDER_NUMBER_PATTERN);\n        return pattern.matcher(travelOrderNumber).matches();\n    }\n}\n```\n\nDependencies needed to run this application:\n\n- Java 8 or later\n- Spring Boot Starter Web\n- Spring Boot Starter Validation\n\nYou can add these dependencies to your `pom.xml` file if you are using Maven:\n\n```xml\n<dependencies>\n    <dependency>\n        <groupId>org.springframework.boot</groupId>\n        <artifactId>spring-boot-starter-web</artifactId>\n    </dependency>\n    <dependency>\n        <groupId>org.springframework.boot</groupId>\n        <artifactId>spring-boot-starter-validation</artifactId>\n    </dependency>\n</dependencies>\n```\n\nPlease note that this is a simplified example and does not include the full implementation of the `TravelController` class and its dependencies. You would need to adjust it according to your project structure and requirements.\n\n\n\n## References\n- [OWASP: REST Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html)\n- [OWASP: Input Validation Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html)\n- [OWASP: Bean Validation Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Bean_Validation_Cheat_Sheet.html)\n\n\n"
@@ -132,7 +132,7 @@
               }
             },
             {
-              "id": "glog-17a82db2-e804-44b3-ab2e-42e75a6f4ce5",
+              "id": "glog-150527a6-24c4-4fdc-b94e-125d9fece33e",
               "help": {
                 "text": "",
                 "markdown": "\nThis class is a Spring Controller. All methods annotated with `RequestMapping` (as well as its shortcut annotations `GetMapping`, `PostMapping`, `PutMapping`, `DeleteMapping`, and `PatchMapping`) are reachable remotely. This class should be analyzed to make sure that remotely exposed methods are safe to expose to potential attackers.\n\nPerform input validation to ensure only properly formed data is entering the workflow in an information system, preventing malformed data from persisting in the database and triggering malfunction of various downstream components. Input validation should happen as early as possible in the data flow, preferably as soon as the data is received from the external party.\n\nData from all potentially untrusted sources should be subject to input validation, including not only Internet-facing web clients but also backend feeds over extranets, from suppliers, partners, vendors or regulators, each of which may be compromised on their own and start sending malformed data.\n\n\n## Solution (Bean Validation)\n\n```java\npublic class ExampleDto implements Serializable {\n    @Pattern(regexp = \"white list regular expression\")\n    @Size(min = minimum field size, max = maximum field size)\n    private String fieldName;\n}\n```\n\n## Solution (Validation Service or Method)\n\n```java\npublic boolean validateData(string data, String whiteListRegex) {\n    Pattern p = Pattern.compile(whiteListRegex);\n    Matcher m = p.matcher(data);\n    return m.matches();\n}\n```\n\n\n\n## References\n- [OWASP: REST Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html)\n- [OWASP: Input Validation Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html)\n- [OWASP: Bean Validation Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Bean_Validation_Cheat_Sheet.html)\n\n\n"
@@ -144,7 +144,7 @@
               }
             },
             {
-              "id": "glog-095a0cbc-2384-4535-9aff-ea5fde78a9ac",
+              "id": "glog-c3bf8bfe-767a-4ea0-9417-03c376821476",
               "help": {
                 "text": "",
                 "markdown": "\nThis class is a Spring Controller. All methods annotated with `RequestMapping` (as well as its shortcut annotations `GetMapping`, `PostMapping`, `PutMapping`, `DeleteMapping`, and `PatchMapping`) are reachable remotely. This class should be analyzed to make sure that remotely exposed methods are safe to expose to potential attackers.\n\nPerform input validation to ensure only properly formed data is entering the workflow in an information system, preventing malformed data from persisting in the database and triggering malfunction of various downstream components. Input validation should happen as early as possible in the data flow, preferably as soon as the data is received from the external party.\n\nData from all potentially untrusted sources should be subject to input validation, including not only Internet-facing web clients but also backend feeds over extranets, from suppliers, partners, vendors or regulators, each of which may be compromised on their own and start sending malformed data.\n\n\n## Solution (Bean Validation)\n\n```java\npublic class ExampleDto implements Serializable {\n    @Pattern(regexp = \"white list regular expression\")\n    @Size(min = minimum field size, max = maximum field size)\n    private String fieldName;\n}\n```\n\n## Solution (Validation Service or Method)\n\n```java\npublic boolean validateData(string data, String whiteListRegex) {\n    Pattern p = Pattern.compile(whiteListRegex);\n    Matcher m = p.matcher(data);\n    return m.matches();\n}\n```\n\n\n\n## References\n- [OWASP: REST Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html)\n- [OWASP: Input Validation Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html)\n- [OWASP: Bean Validation Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Bean_Validation_Cheat_Sheet.html)\n\n\n"
@@ -156,7 +156,7 @@
               }
             },
             {
-              "id": "glog-5c1da55d-061a-4819-a9b8-4b6c5e0f75b1",
+              "id": "glog-31751561-9fc4-402a-8c2d-a5d4198fd70c",
               "help": {
                 "text": "",
                 "markdown": "\nThis class is a Spring Controller. All methods annotated with `RequestMapping` (as well as its shortcut annotations `GetMapping`, `PostMapping`, `PutMapping`, `DeleteMapping`, and `PatchMapping`) are reachable remotely. This class should be analyzed to make sure that remotely exposed methods are safe to expose to potential attackers.\n\nPerform input validation to ensure only properly formed data is entering the workflow in an information system, preventing malformed data from persisting in the database and triggering malfunction of various downstream components. Input validation should happen as early as possible in the data flow, preferably as soon as the data is received from the external party.\n\nData from all potentially untrusted sources should be subject to input validation, including not only Internet-facing web clients but also backend feeds over extranets, from suppliers, partners, vendors or regulators, each of which may be compromised on their own and start sending malformed data.\n\n\n## Solution (Bean Validation)\n\n```java\npublic class ExampleDto implements Serializable {\n    @Pattern(regexp = \"white list regular expression\")\n    @Size(min = minimum field size, max = maximum field size)\n    private String fieldName;\n}\n```\n\n## Solution (Validation Service or Method)\n\n```java\npublic boolean validateData(string data, String whiteListRegex) {\n    Pattern p = Pattern.compile(whiteListRegex);\n    Matcher m = p.matcher(data);\n    return m.matches();\n}\n```\n\n\n\n## References\n- [OWASP: REST Security Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/REST_Security_Cheat_Sheet.html)\n- [OWASP: Input Validation Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html)\n- [OWASP: Bean Validation Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Bean_Validation_Cheat_Sheet.html)\n\n\n"
@@ -168,7 +168,7 @@
               }
             },
             {
-              "id": "glog-e86324ab-eed1-457d-b680-98b98e91ba3a",
+              "id": "glog-251518db-5152-4509-b444-6e3cb5515bde",
               "help": {
                 "text": "",
                 "markdown": "## Description\n\n\"HTTP Headers Not Trustworthy\" is a vulnerability that arises when an application trusts data sent via HTTP headers without proper validation. This can lead to various security issues such as HTTP Response Splitting, Cross-Site Scripting (XSS), or other injection attacks. In Java, this vulnerability can occur when using methods like `request.getHeader()` to retrieve data from HTTP headers.\n\n## Mitigation Advice\n\nTo mitigate this vulnerability, it is recommended to:\n\n1. Avoid trusting HTTP headers blindly. Always validate and sanitize the data retrieved from HTTP headers before using it in your application.\n2. Use a list of allowed characters and reject any input that contains characters not in the list.\n3. Use a security framework that automatically handles these types of vulnerabilities.\n\n## Source Code Fix Recommendation\n\nHere is an example of how to sanitize the header data using a whitelist of allowed characters:\n\n```java\nimport java.util.regex.Pattern;\nimport javax.servlet.http.HttpServletRequest;\n\n// ...\n\nprivate static final Pattern AUTH_HEADER_PATTERN = Pattern.compile(\"^[a-zA-Z0-9]*$\");\n\n// ...\n\nString token = request.getHeader(\"AUTH_HEADER\");\nif (!AUTH_HEADER_PATTERN.matcher(token).matches()) {\n    throw new IllegalArgumentException(\"Invalid characters in auth header\");\n}\n```\n\nIn this example, only alphanumeric characters are allowed in the `AUTH_HEADER`. Any other characters will cause an `IllegalArgumentException` to be thrown.\n\n## Library Dependencies\n\nThe code example does not require any additional library dependencies beyond what is typically included in a standard Java web application:\n\n- `javax.servlet-api` for `HttpServletRequest`\n\n## References\n\n- [OWASP: Unvalidated Redirects and Forwards Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Unvalidated_Redirects_and_Forwards_Cheat_Sheet.html)\n- [CWE-113: Improper Neutralization of CRLF Sequences in HTTP Headers ('HTTP Response Splitting')](https://cwe.mitre.org/data/definitions/113.html)\n\nPlease note that the links provided are active and accessible to anonymous users at the time of writing this report."
@@ -180,7 +180,7 @@
               }
             },
             {
-              "id": "glog-6a9050e0-b20a-4645-977a-6112c9ff46f9",
+              "id": "glog-af9d5131-584d-4d3e-b49f-5d9bd2a5a165",
               "help": {
                 "text": "",
                 "markdown": "## Description\n\nCross-Site Request Forgery (CSRF) is a type of attack that occurs when a malicious web site, email, blog, instant message, or program causes a user's web browser to perform an unwanted action on a trusted site for which the user is authenticated. In the context of Java programming, the vulnerability \"Protection against Spring CSRF is deactivated\" refers to the situation where the CSRF protection provided by the Spring Security framework is disabled.\n\nIn the provided code snippet `csrf().disable().authorizeRequests().anyRequest().permitAll()`, the `csrf().disable()` method call disables CSRF protection. This means that the application is vulnerable to CSRF attacks, as it will not check for the presence of CSRF tokens in the requests it receives.\n\n## Mitigation Advice\n\nTo mitigate this vulnerability, CSRF protection should be enabled. This can be done by removing the `csrf().disable()` method call from the code. With CSRF protection enabled, the application will check for the presence of CSRF tokens in the requests it receives, and reject any requests that do not contain a valid CSRF token.\n\n## Source Code Fix Recommendation\n\nThe fixed code should look like this:\n\n```java\nhttp\n    .authorizeRequests()\n    .anyRequest().permitAll();\n```\n\n## Library Dependencies\n\nThe code example requires the following library dependencies:\n\n- Spring Security\n\n## References\n\n- [OWASP CSRF Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html)\n- [CWE-352: Cross-Site Request Forgery (CSRF)](https://cwe.mitre.org/data/definitions/352.html)"
@@ -192,7 +192,7 @@
               }
             },
             {
-              "id": "glog-982cbdce-68f6-43d5-9606-f65eb9618d30",
+              "id": "glog-999d6dba-a478-49a2-b0f3-95a3166de052",
               "help": {
                 "text": "",
                 "markdown": "## Description\n\nThe code snippet provided is a configuration for Spring Security in a Java application. The vulnerability in this code is that Cross-Site Request Forgery (CSRF) protection has been disabled. CSRF is an attack that tricks the victim into submitting a malicious request. It uses the identity and privileges of the victim to perform an undesired function on their behalf.\n\nIn the context of Spring Security, CSRF protection is enabled by default. In this case, the method `csrf().disable()` is explicitly disabling CSRF protection, which makes the application vulnerable to CSRF attacks.\n\n## Mitigation Advice\n\nTo mitigate this vulnerability, CSRF protection should be enabled. This can be done by removing the `csrf().disable()` method call from the configuration. Spring Security provides CSRF protection by including a unique token in each request. This token is then validated for each request to ensure that the request is not a CSRF attack.\n\n## Source Code Fix Recommendation\n\nHere is the recommended fix for the code:\n\n```java\nhttp\n    .exceptionHandling().authenticationEntryPoint(unauthorizedHandler)\n    .and()\n    .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)\n    .and()\n    .authorizeRequests()\n    .antMatchers(\"/api-travels/v1/auth/**\", \"/api-travels/v1/users/**\", \"/configuration/security\", \"/webjars/**\", \"/v2/api-docs\", \"/swagger-resources/**\", \"/swagger-ui/**\", \"/manage/**\")\n    .permitAll()\n    .anyRequest().authenticated();\n```\n\n## Library Dependencies\n\nThe code example requires the following library dependencies:\n\n- Spring Security\n- Spring Web\n\n## OWASP and CWE Links\n\n- [OWASP CSRF Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html)\n- [CWE-352: Cross-Site Request Forgery (CSRF)](https://cwe.mitre.org/data/definitions/352.html)"
@@ -204,7 +204,7 @@
               }
             },
             {
-              "id": "glog-dfa8620f-91d8-4ab4-b4d1-16ec26604ecb",
+              "id": "glog-7c9259f1-7932-4b3e-a326-afb3fc727999",
               "help": {
                 "text": "",
                 "markdown": "## Description\n\nThe \"HTTP Headers Not Trustworthy\" vulnerability in Java programming language refers to the security risk associated with trusting HTTP headers without proper validation. HTTP headers are part of the HTTP request and response messages and can be manipulated by an attacker. If your application trusts these headers without validation, it can lead to various security issues such as Cross-Site Scripting (XSS), HTTP Response Splitting, and others.\n\nIn the provided code snippet, the application is retrieving an API key from the HTTP header without any validation:\n\n```java\nString apiKey = request.getHeader(TravelsApiUtil.HEADER_API_KEY);\n```\n\n## Mitigation Advice\n\nTo mitigate this vulnerability, you should never trust HTTP headers and always validate them before use. Validation can include checking for illegal characters, verifying the length, and comparing against a whitelist of expected values.\n\n## Source Code Fix Recommendation\n\nHere is a simple way to validate the API key header:\n\n```java\nString apiKey = request.getHeader(TravelsApiUtil.HEADER_API_KEY);\nif (apiKey == null || !apiKey.matches(\"^[a-zA-Z0-9]{32}$\")) {\n    throw new IllegalArgumentException(\"Invalid API Key\");\n}\n```\n\nIn this example, we are checking if the API key is null or if it doesn't match the regular expression `^[a-zA-Z0-9]{32}$`, which represents a 32-character alphanumeric string. If it doesn't match, an exception is thrown.\n\n## Library Dependencies\n\nThe code example does not provide enough context to determine the exact library dependencies. However, it's likely that the code is part of a web application, which would require a web framework such as Spring, Jakarta EE, or similar. The `request` object is typically provided by these frameworks.\n\n## References\n\n- [CWE-113: Improper Neutralization of CRLF Sequences in HTTP Headers ('HTTP Response Splitting')](https://cwe.mitre.org/data/definitions/113.html)\n- [CWE-20: Improper Input Validation](https://cwe.mitre.org/data/definitions/20.html)"
@@ -227,7 +227,7 @@
       "language": "en-US",
       "results": [
         {
-          "ruleId": "glog-03f79959-fbdb-4051-b667-4caa2b5eed49",
+          "ruleId": "glog-88db42b4-2b57-46f9-a85f-9c5b3ee073ba",
           "kind": "fail",
           "level": "note",
           "message": {
@@ -259,7 +259,7 @@
           ]
         },
         {
-          "ruleId": "glog-9057352e-f2ea-4db4-af03-c6b362205267",
+          "ruleId": "glog-714d63e7-dce7-4eb5-801d-2b5c161ec84c",
           "kind": "fail",
           "level": "note",
           "message": {
@@ -291,7 +291,7 @@
           ]
         },
         {
-          "ruleId": "glog-e082db00-9e35-4f10-9d62-b499974a913e",
+          "ruleId": "glog-c8039e16-53a7-403a-83de-b9e2ffa486e9",
           "kind": "fail",
           "level": "note",
           "message": {
@@ -323,7 +323,7 @@
           ]
         },
         {
-          "ruleId": "glog-f651b737-e27f-4f6d-bda9-117bae3c6fdb",
+          "ruleId": "glog-4cdf92d3-2c86-40c1-a629-361431eddb8f",
           "kind": "fail",
           "level": "note",
           "message": {
@@ -355,7 +355,7 @@
           ]
         },
         {
-          "ruleId": "glog-6b8b46a1-b2a6-440e-9c2d-d087da8d7516",
+          "ruleId": "glog-0bcdd0cc-dc2c-44e7-9c5e-52b982dcb3e8",
           "kind": "fail",
           "level": "note",
           "message": {
@@ -387,7 +387,7 @@
           ]
         },
         {
-          "ruleId": "glog-d47c2798-11a0-41d6-b991-d0d81d83387c",
+          "ruleId": "glog-18809a48-432a-4ff2-8994-d0fbc0540782",
           "kind": "fail",
           "level": "note",
           "message": {
@@ -419,7 +419,7 @@
           ]
         },
         {
-          "ruleId": "glog-bd1d9fdd-e508-4d10-889b-bf03cc76feb9",
+          "ruleId": "glog-4b93a66b-09ba-434e-b179-47b5bb3826e9",
           "kind": "fail",
           "level": "note",
           "message": {
@@ -451,7 +451,7 @@
           ]
         },
         {
-          "ruleId": "glog-22539732-9f8a-4815-8d0d-b345a2913bf0",
+          "ruleId": "glog-6355e6bc-7a96-496d-8d09-1169685b3384",
           "kind": "fail",
           "level": "note",
           "message": {
@@ -483,7 +483,7 @@
           ]
         },
         {
-          "ruleId": "glog-c5db1b58-799b-44ba-9961-e0563231e5e0",
+          "ruleId": "glog-87ddbe13-dfe0-4dce-9457-39a2777a4096",
           "kind": "fail",
           "level": "note",
           "message": {
@@ -515,7 +515,7 @@
           ]
         },
         {
-          "ruleId": "glog-53f20e2b-7f57-4788-9d30-09aaeb6c6fc0",
+          "ruleId": "glog-f667f447-2876-409d-a310-2001ca80ddfb",
           "kind": "fail",
           "level": "note",
           "message": {
@@ -547,7 +547,7 @@
           ]
         },
         {
-          "ruleId": "glog-17a82db2-e804-44b3-ab2e-42e75a6f4ce5",
+          "ruleId": "glog-150527a6-24c4-4fdc-b94e-125d9fece33e",
           "kind": "fail",
           "level": "note",
           "message": {
@@ -579,7 +579,7 @@
           ]
         },
         {
-          "ruleId": "glog-095a0cbc-2384-4535-9aff-ea5fde78a9ac",
+          "ruleId": "glog-c3bf8bfe-767a-4ea0-9417-03c376821476",
           "kind": "fail",
           "level": "note",
           "message": {
@@ -611,7 +611,7 @@
           ]
         },
         {
-          "ruleId": "glog-5c1da55d-061a-4819-a9b8-4b6c5e0f75b1",
+          "ruleId": "glog-31751561-9fc4-402a-8c2d-a5d4198fd70c",
           "kind": "fail",
           "level": "note",
           "message": {
@@ -643,7 +643,7 @@
           ]
         },
         {
-          "ruleId": "glog-e86324ab-eed1-457d-b680-98b98e91ba3a",
+          "ruleId": "glog-251518db-5152-4509-b444-6e3cb5515bde",
           "kind": "fail",
           "level": "note",
           "message": {
@@ -671,7 +671,7 @@
           ]
         },
         {
-          "ruleId": "glog-6a9050e0-b20a-4645-977a-6112c9ff46f9",
+          "ruleId": "glog-af9d5131-584d-4d3e-b49f-5d9bd2a5a165",
           "kind": "fail",
           "level": "warning",
           "message": {
@@ -699,7 +699,7 @@
           ]
         },
         {
-          "ruleId": "glog-982cbdce-68f6-43d5-9606-f65eb9618d30",
+          "ruleId": "glog-999d6dba-a478-49a2-b0f3-95a3166de052",
           "kind": "fail",
           "level": "warning",
           "message": {
@@ -727,7 +727,7 @@
           ]
         },
         {
-          "ruleId": "glog-dfa8620f-91d8-4ab4-b4d1-16ec26604ecb",
+          "ruleId": "glog-7c9259f1-7932-4b3e-a326-afb3fc727999",
           "kind": "fail",
           "level": "note",
           "message": {
