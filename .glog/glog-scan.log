@@ -1,4 +1,4 @@
-Apr 07, 2025 1:30:10 PM ai.glog.plugins.spotbugs.bug.resolve.SpringMvcEndpointResolver getDetailText
+Apr 08, 2025 9:29:59 AM ai.glog.plugins.spotbugs.bug.resolve.SpringMvcEndpointResolver getDetailText
 SEVERE: next on empty iterator
 java.util.NoSuchElementException: next on empty iterator
 	at scala.collection.Iterator$$anon$19.next(Iterator.scala:973)
@@ -25,7 +25,7 @@ java.util.NoSuchElementException: next on empty iterator
 	at ai.glog.execute.GlogTriage.execute(GlogTriage.java:71)
 	at ai.glog.GlogCommandLine.main(GlogCommandLine.java:65)
 
-Apr 07, 2025 1:30:10 PM ai.glog.plugins.spotbugs.bug.resolve.SpringMvcEndpointResolver getDetailText
+Apr 08, 2025 9:29:59 AM ai.glog.plugins.spotbugs.bug.resolve.SpringMvcEndpointResolver getDetailText
 SEVERE: next on empty iterator
 java.util.NoSuchElementException: next on empty iterator
 	at scala.collection.Iterator$$anon$19.next(Iterator.scala:973)
@@ -53,7 +53,7 @@ java.util.NoSuchElementException: next on empty iterator
 	at ai.glog.execute.GlogTriage.execute(GlogTriage.java:73)
 	at ai.glog.GlogCommandLine.main(GlogCommandLine.java:65)
 
-Apr 07, 2025 1:30:13 PM ai.glog.plugins.spotbugs.bug.resolve.SpringMvcEndpointResolver getDetailText
+Apr 08, 2025 9:30:03 AM ai.glog.plugins.spotbugs.bug.resolve.SpringMvcEndpointResolver getDetailText
 SEVERE: next on empty iterator
 java.util.NoSuchElementException: next on empty iterator
 	at scala.collection.Iterator$$anon$19.next(Iterator.scala:973)
@@ -80,7 +80,7 @@ java.util.NoSuchElementException: next on empty iterator
 	at ai.glog.execute.GlogTriage.execute(GlogTriage.java:71)
 	at ai.glog.GlogCommandLine.main(GlogCommandLine.java:65)
 
-Apr 07, 2025 1:30:13 PM ai.glog.plugins.spotbugs.bug.resolve.SpringMvcEndpointResolver getDetailText
+Apr 08, 2025 9:30:03 AM ai.glog.plugins.spotbugs.bug.resolve.SpringMvcEndpointResolver getDetailText
 SEVERE: next on empty iterator
 java.util.NoSuchElementException: next on empty iterator
 	at scala.collection.Iterator$$anon$19.next(Iterator.scala:973)
@@ -108,7 +108,7 @@ java.util.NoSuchElementException: next on empty iterator
 	at ai.glog.execute.GlogTriage.execute(GlogTriage.java:73)
 	at ai.glog.GlogCommandLine.main(GlogCommandLine.java:65)
 
-Apr 07, 2025 1:30:14 PM ai.glog.plugins.spotbugs.bug.resolve.SpringMvcEndpointResolver getDetailText
+Apr 08, 2025 9:30:04 AM ai.glog.plugins.spotbugs.bug.resolve.SpringMvcEndpointResolver getDetailText
 SEVERE: next on empty iterator
 java.util.NoSuchElementException: next on empty iterator
 	at scala.collection.Iterator$$anon$19.next(Iterator.scala:973)
@@ -135,7 +135,7 @@ java.util.NoSuchElementException: next on empty iterator
 	at ai.glog.execute.GlogTriage.execute(GlogTriage.java:71)
 	at ai.glog.GlogCommandLine.main(GlogCommandLine.java:65)
 
-Apr 07, 2025 1:30:14 PM ai.glog.plugins.spotbugs.bug.resolve.SpringMvcEndpointResolver getDetailText
+Apr 08, 2025 9:30:04 AM ai.glog.plugins.spotbugs.bug.resolve.SpringMvcEndpointResolver getDetailText
 SEVERE: next on empty iterator
 java.util.NoSuchElementException: next on empty iterator
 	at scala.collection.Iterator$$anon$19.next(Iterator.scala:973)
@@ -163,7 +163,7 @@ java.util.NoSuchElementException: next on empty iterator
 	at ai.glog.execute.GlogTriage.execute(GlogTriage.java:73)
 	at ai.glog.GlogCommandLine.main(GlogCommandLine.java:65)
 
-Apr 07, 2025 1:30:21 PM ai.glog.plugins.spotbugs.bug.resolve.SpringMvcEndpointResolver getDetailText
+Apr 08, 2025 9:30:11 AM ai.glog.plugins.spotbugs.bug.resolve.SpringMvcEndpointResolver getDetailText
 SEVERE: next on empty iterator
 java.util.NoSuchElementException: next on empty iterator
 	at scala.collection.Iterator$$anon$19.next(Iterator.scala:973)
@@ -190,7 +190,7 @@ java.util.NoSuchElementException: next on empty iterator
 	at ai.glog.execute.GlogTriage.execute(GlogTriage.java:71)
 	at ai.glog.GlogCommandLine.main(GlogCommandLine.java:65)
 
-Apr 07, 2025 1:30:21 PM ai.glog.plugins.spotbugs.bug.resolve.SpringMvcEndpointResolver getDetailText
+Apr 08, 2025 9:30:11 AM ai.glog.plugins.spotbugs.bug.resolve.SpringMvcEndpointResolver getDetailText
 SEVERE: next on empty iterator
 java.util.NoSuchElementException: next on empty iterator
 	at scala.collection.Iterator$$anon$19.next(Iterator.scala:973)
@@ -218,7 +218,7 @@ java.util.NoSuchElementException: next on empty iterator
 	at ai.glog.execute.GlogTriage.execute(GlogTriage.java:73)
 	at ai.glog.GlogCommandLine.main(GlogCommandLine.java:65)
 
-Apr 07, 2025 1:30:21 PM ai.glog.plugins.spotbugs.bug.resolve.SpringMvcEndpointResolver getDetailText
+Apr 08, 2025 9:30:11 AM ai.glog.plugins.spotbugs.bug.resolve.SpringMvcEndpointResolver getDetailText
 SEVERE: next on empty iterator
 java.util.NoSuchElementException: next on empty iterator
 	at scala.collection.Iterator$$anon$19.next(Iterator.scala:973)
@@ -245,7 +245,7 @@ java.util.NoSuchElementException: next on empty iterator
 	at ai.glog.execute.GlogTriage.execute(GlogTriage.java:71)
 	at ai.glog.GlogCommandLine.main(GlogCommandLine.java:65)
 
-Apr 07, 2025 1:30:21 PM ai.glog.plugins.spotbugs.bug.resolve.SpringMvcEndpointResolver getDetailText
+Apr 08, 2025 9:30:11 AM ai.glog.plugins.spotbugs.bug.resolve.SpringMvcEndpointResolver getDetailText
 SEVERE: next on empty iterator
 java.util.NoSuchElementException: next on empty iterator
 	at scala.collection.Iterator$$anon$19.next(Iterator.scala:973)
@@ -273,7 +273,7 @@ java.util.NoSuchElementException: next on empty iterator
 	at ai.glog.execute.GlogTriage.execute(GlogTriage.java:73)
 	at ai.glog.GlogCommandLine.main(GlogCommandLine.java:65)
 
-Apr 07, 2025 1:30:21 PM ai.glog.plugins.spotbugs.bug.resolve.SpringMvcEndpointResolver getDetailText
+Apr 08, 2025 9:30:11 AM ai.glog.plugins.spotbugs.bug.resolve.SpringMvcEndpointResolver getDetailText
 SEVERE: next on empty iterator
 java.util.NoSuchElementException: next on empty iterator
 	at scala.collection.Iterator$$anon$19.next(Iterator.scala:973)
@@ -300,7 +300,7 @@ java.util.NoSuchElementException: next on empty iterator
 	at ai.glog.execute.GlogTriage.execute(GlogTriage.java:71)
 	at ai.glog.GlogCommandLine.main(GlogCommandLine.java:65)
 
-Apr 07, 2025 1:30:21 PM ai.glog.plugins.spotbugs.bug.resolve.SpringMvcEndpointResolver getDetailText
+Apr 08, 2025 9:30:11 AM ai.glog.plugins.spotbugs.bug.resolve.SpringMvcEndpointResolver getDetailText
 SEVERE: next on empty iterator
 java.util.NoSuchElementException: next on empty iterator
 	at scala.collection.Iterator$$anon$19.next(Iterator.scala:973)
